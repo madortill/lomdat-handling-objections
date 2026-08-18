@@ -1,0 +1,67 @@
+@font-face {
+    font-family: "Ploni";
+    src: url("/ploni-regular-aaa.otf");
+}
+
+@font-face {
+    font-family: "PloniB";
+    src: url("/ploni-bold-aaa.otf");
+}
+
+@font-face {
+    font-family: "Matty";
+    src: url("/OHMattyWeiss-Regular.ttf");
+}
+
+  html,
+body {
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  /* background-color: #c2deff; */
+  overscroll-behavior: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
+  font-family: "Ploni";
+}
+
+/* html {
+    font-size: calc(1vh + 0.5vw);
+} */
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  overflow:  hidden;
+}
+
+::selection {
+  color: white;
+  background-color: #e78c38;
+}
+
+body {
+    background: #c6eaff;
+  }
+
+.app {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  direction: rtl;
+  width: 100%;
+  max-width: 440px;
+  height: 100vh;
+  background-color: #D3EEFF;
+  overflow: hidden;
+  position: relative;
+
+  container-type: inline-size;
+}
