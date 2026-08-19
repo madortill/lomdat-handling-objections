@@ -11,8 +11,16 @@
     align-items: center;
 
     padding: 6cqw;
+
 }
 
+/* .opening-black-cover {
+    filter: blur(8px);
+    position: absolute;
+    width: 100cqw;
+    background-color: #00000004;
+    height: 210cqw;
+} */
 
 /* הכרטיס המרכזי */
 

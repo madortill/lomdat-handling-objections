@@ -30,7 +30,7 @@ function OpeningPage() {
 
   return (
     <div className="opening-page">
-      {/* <div className="opening-black-cover"> */}
+      <div className="opening-black-cover"></div>
       <img src={bahad} alt="bahad logo" className="bahad-logo" />
       <img src={bahad2} alt="bahad2 logo" className="bahad2-logo" />
       <img src={til} alt="til logo" className="til-logo" />
