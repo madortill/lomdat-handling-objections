@@ -1,0 +1,616 @@
+/* ============================================================
+   LEARNING PAGE
+============================================================ */
+
+.learning-page {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    /*
+       נראה רק במסכים שרחבים יותר מהפרופורציה
+       של הלומדה, למשל מחשב.
+    */
+    background: #c6eaff;
+}
+
+
+/* ============================================================
+   STAGE
+   כל הגרפיקה החדשה = 479 × 852
+
+   אין Media Queries.
+   הגובה קובע את כל ה-scaling.
+============================================================ */
+
+.learning-stage {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    height: 100dvh;
+
+    width: calc(100dvh * 479 / 852);
+
+    aspect-ratio: 479 / 852;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: #f7f2ec;
+}
+
+
+/* ============================================================
+   CLASSROOM SCENE
+   כל האסטים הבאים הם 479 × 852:
+
+   classroom-background
+   projector
+   floor-highlight
+   computer
+   chair
+============================================================ */
+
+.learning-scene {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   CLASSROOM BACKGROUND
+============================================================ */
+
+.learning-background {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: fill;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   CLASSROOM OBJECTS
+============================================================ */
+
+.learning-object {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: fill;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    transition:
+        filter 0.35s ease,
+        opacity 0.35s ease;
+}
+
+
+/* ============================================================
+   CURRENT OBJECT
+   הבהוב כחול
+============================================================ */
+
+.learning-object.is-current {
+    animation:
+        learningBluePulse 1.35s ease-in-out infinite;
+}
+
+
+@keyframes learningBluePulse {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(0 0 0.08rem rgba(255, 255, 255, 0.8)) drop-shadow(0 0 0.25rem rgba(80, 186, 239, 0.45));
+    }
+
+
+    50% {
+        filter:
+            drop-shadow(0 0 0.18rem rgba(255, 255, 255, 0.95)) drop-shadow(0 0 0.5rem rgba(79, 190, 243, 0.95)) drop-shadow(0 0 0.85rem rgba(26, 132, 194, 0.65));
+    }
+}
+
+
+/* ============================================================
+   SAFETY
+   בזמן פתיח הדמות שום דבר לא מהבהב
+============================================================ */
+
+.learning-stage.is-intro-open .learning-object.is-current {
+    animation: none !important;
+    filter: none !important;
+}
+
+
+/* ============================================================
+   COMPLETED OBJECT
+   זוהר ירוק
+============================================================ */
+
+.learning-object.is-completed {
+    animation: none;
+
+    filter:
+        drop-shadow(0 0 0.12rem rgba(255, 255, 255, 0.85)) drop-shadow(0 0 0.38rem rgba(85, 185, 94, 0.8)) drop-shadow(0 0 0.65rem rgba(85, 185, 94, 0.45));
+}
+
+
+/* ============================================================
+   SAFE AREA
+   האזור המקורי = 393 × 852
+
+   393 / 479 = 82.0459%
+
+   כל התוכן החשוב נמצא כאן:
+   - hitboxes
+   - logos
+   - character
+   - speech bubble
+============================================================ */
+
+.learning-safe-area {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 82.0459%;
+    height: 100%;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    /*
+       עכשיו כל cqw בתוך ה-safe-area
+       מחושב כאילו חזרנו לפריים המקורי
+       של 393px.
+    */
+    container-type: inline-size;
+}
+
+
+/* ============================================================
+   HITBOXES
+============================================================ */
+
+.learning-hitbox {
+    position: absolute;
+
+    z-index: 20;
+
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.learning-hitbox.is-locked {
+    cursor: default;
+
+    pointer-events: none;
+}
+
+
+.learning-hitbox:disabled {
+    pointer-events: none;
+}
+
+
+.learning-hitbox:focus-visible {
+    outline:
+        0.12rem solid rgba(51, 163, 220, 0.8);
+
+    outline-offset: 0.1rem;
+}
+
+
+/* ============================================================
+   HITBOX DEBUG
+
+   אם נרצה לבדוק אחר כך את אזורי הלחיצה
+   נוציא את זה מההערה.
+============================================================ */
+
+/*
+
+.learning-hitbox {
+    background: rgba(255, 0, 0, 0.18);
+    outline: 1px solid red;
+}
+
+*/
+
+
+/* ============================================================
+   COMPLETION V
+============================================================ */
+
+.learning-completion-check {
+    position: absolute;
+
+    top: -0.35rem;
+    right: -0.2rem;
+
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #55B95E;
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    z-index: 5;
+
+    box-shadow:
+        0 0 0.5rem rgba(85, 185, 94, 0.5);
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   TOP LOGOS
+   ממוקמים ביחס ל-393 SAFE AREA
+============================================================ */
+
+.learning-logos {
+    position: absolute;
+
+    top: 2.5cqw;
+    left: 2.5cqw;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 1.3cqw;
+
+    pointer-events: none;
+}
+
+
+.learning-bahad-logo {
+    display: block;
+
+    width: 8cqw;
+    height: auto;
+
+    filter:
+        drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.95));
+}
+
+
+.learning-bahad2-logo {
+    display: block;
+
+    width: 14cqw;
+    height: auto;
+
+    filter:
+        drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.95));
+}
+
+
+/* ============================================================
+   TIL LOGO
+============================================================ */
+
+.learning-til-logo {
+    position: absolute;
+
+    right: 3cqw;
+    bottom: 3cqw;
+
+    width: 12cqw;
+    height: auto;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.95));
+}
+
+
+/* ============================================================
+   INTRO
+============================================================ */
+
+.learning-intro {
+    position: absolute;
+    inset: 0;
+
+    z-index: 40;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   SPEECH BUBBLE
+============================================================ */
+
+.learning-intro-bubble {
+    position: absolute;
+
+    top: 20%;
+    left: 13%;
+
+    width: 59%;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        5.2cqw 5.2cqw 3.5cqw;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border:
+        0.22cqw solid rgba(65, 65, 65, 0.6);
+
+    border-radius: 5cqw;
+
+    box-shadow:
+        0 0.7cqw 2.5cqw rgba(0, 0, 0, 0.18);
+
+    z-index: 42;
+
+    pointer-events: auto;
+
+    animation:
+        learningBubbleIn 0.45s ease both;
+}
+
+
+/* ============================================================
+   SPEECH BUBBLE ARROW
+============================================================ */
+
+.learning-intro-bubble::after {
+    content: "";
+
+    position: absolute;
+
+    right: 12%;
+    bottom: -2.4cqw;
+
+    width: 4.7cqw;
+    height: 4.7cqw;
+
+    background: white;
+
+    border-right:
+        0.22cqw solid rgba(65, 65, 65, 0.6);
+
+    border-bottom:
+        0.22cqw solid rgba(65, 65, 65, 0.6);
+
+    transform: rotate(45deg);
+}
+
+
+/* ============================================================
+   INTRO TEXT
+============================================================ */
+
+.learning-intro-text {
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0;
+
+    color: #202020;
+
+    font-family: "Ploni";
+
+    font-size: 4.1cqw;
+
+    text-align: center;
+
+    line-height: 1.55;
+}
+
+
+/* ============================================================
+   INTRO BUTTON
+============================================================ */
+
+.learning-intro-button {
+    position: relative;
+
+    z-index: 3;
+
+    width: fit-content;
+
+    margin-top: 3cqw;
+
+    align-self: flex-end;
+
+    padding:
+        1.1cqw 2.8cqw;
+
+    border: none;
+
+    border-radius: 3cqw;
+
+    background: #2F8AA8;
+
+    color: white;
+
+    font-family: "Matty";
+
+    font-size: 3.5cqw;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    transition:
+        transform 0.18s ease,
+        filter 0.18s ease;
+}
+
+
+.learning-intro-button:active {
+    transform: scale(0.94);
+}
+
+
+@media (hover: hover) {
+
+    .learning-intro-button:hover {
+        filter: brightness(1.08);
+    }
+
+}
+
+
+.learning-intro-arrow {
+    display: inline-block;
+
+    margin-right: 1cqw;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 3.2cqw;
+}
+
+
+/* ============================================================
+   CHARACTER
+   גם היא ביחס ל-393 SAFE AREA
+============================================================ */
+
+.learning-character {
+    position: absolute;
+
+    right: 13.5%;
+    bottom: 13.5%;
+
+    width: 28%;
+    height: auto;
+
+    z-index: 41;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    animation:
+        learningCharacterIn 0.5s ease both;
+}
+
+
+/* ============================================================
+   INTRO ANIMATIONS
+============================================================ */
+
+@keyframes learningBubbleIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-1.5cqw);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes learningCharacterIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(3cqw);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}

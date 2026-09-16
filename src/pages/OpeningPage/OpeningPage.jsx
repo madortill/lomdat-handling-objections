@@ -1,20 +1,6 @@
-// import React from "react";
-// import { useState } from "react";
-// import "./css/OpeningPage.css";
-
-// function OpeningPage() {
-//   return (
-//     <>
-//       <div className="">
-
-//       </div>
-//     </>
-//   );
-// }
-
-// export default OpeningPage;
-
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { startOrResumeLearning } from "../../utils/learningProgress.js";
 import "./OpeningPage.css";
 
 import bahad from "../../assets/bahad.png";
@@ -25,6 +11,7 @@ import option2 from "../../assets/boy.svg";
 import btn from "../../assets/btn-opening.png";
 
 function OpeningPage() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -67,26 +54,36 @@ function OpeningPage() {
             <button
               type="button"
               className={`image-option ${
-                selectedImage === 1 ? "selected" : ""
+                selectedImage === "girl" ? "selected" : ""
               }`}
-              onClick={() => setSelectedImage(1)}
+              onClick={() => setSelectedImage("girl")}
             >
-              <img src={option1} alt="דמות ראשונה" />
+              <img src={option1} alt="חיילת" />
             </button>
 
             <button
               type="button"
               className={`image-option ${
-                selectedImage === 2 ? "selected" : ""
+                selectedImage === "boy" ? "selected" : ""
               }`}
-              onClick={() => setSelectedImage(2)}
+              onClick={() => setSelectedImage("boy")}
             >
-              <img src={option2} alt="דמות שנייה" />
+              <img src={option2} alt="חייל" />
             </button>
           </div>
 
           {selectedImage && (
-            <button type="button" className="continue-button">
+            <button
+              type="button"
+              className="continue-button"
+              onClick={() => {
+                startOrResumeLearning(
+                  selectedImage
+                );
+              
+                navigate("/learning");
+              }}
+            >
               להתחלת הלומדה
             </button>
           )}

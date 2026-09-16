@@ -38,7 +38,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100vh;
+  height: 91vh;
   overflow:  hidden;
 }
 
@@ -64,4 +64,43 @@ body {
   position: relative;
 
   container-type: inline-size;
+}
+
+.app-loading {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  background: #D3EEFF;
+
+  color: #2E86A6;
+
+  font-family: "PloniB";
+  font-size: 1.2rem;
+}
+
+
+.app-loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border: 0.3rem solid rgba(46, 134, 166, 0.2);
+  border-top-color: #2E86A6;
+
+  border-radius: 50%;
+
+  animation: loading-spin 0.8s linear infinite;
+}
+
+
+@keyframes loading-spin {
+  to {
+      transform: rotate(360deg);
+  }
 }
