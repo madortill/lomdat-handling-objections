@@ -1,29 +1,9 @@
-// import { HashRouter, Routes, Route } from "react-router-dom";
-// import React from "react";
-// import { useState } from "react";
-// import OpeningPage from "./pages/OpeningPage/OpeningPage";
-// import "./css/App.css";
-
-// function App() {
-//   return (
-//     <>
-//       <div className="app">
-//         <Routes>
-//           <Route path="/" element={<OpeningPage />} />
-//         </Routes>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default App;
-
-
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import OpeningPage from "./pages/OpeningPage/OpeningPage";
 import LearningPage from "./pages/LearningPage/LearningPage";
+import ProjectorPage from "./pages/ProjectorPage/ProjectorPage";
 // import EndPage from "./pages/EndPage/EndPage";
 
 import "./css/App.css";
@@ -52,15 +32,11 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route
-          path="/"
-          element={<OpeningPage />}
-        />
+        <Route path="/" element={<OpeningPage />} />
 
-        <Route
-          path="/learning"
-          element={<LearningPage />}
-        />
+        <Route path="/learning" element={<LearningPage />} />
+
+        <Route path="/learning/projector" element={<ProjectorPage />} />
 
         {/* <Route
           path="/end"

@@ -1,0 +1,1316 @@
+/* ============================================================
+   PROJECTOR PAGE
+============================================================ */
+
+.projector-page {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #D3EEFF;
+}
+
+
+/* ============================================================
+   STAGE
+   479 × 852
+
+   אין media queries.
+   כל העמוד גדל/קטן כיחידה אחת.
+============================================================ */
+
+.projector-stage {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    height: 100%;
+
+    width: auto;
+
+    aspect-ratio: 479 / 852;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    /*
+       כל cqw בעמוד יחושב
+       ביחס לרוחב ה-stage.
+    */
+    container-type: inline-size;
+}
+
+
+/* ============================================================
+   BACKGROUND
+============================================================ */
+
+.projector-background {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: fill;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   LOGOS
+============================================================ */
+
+.projector-safe-area {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 82.0459%;
+    height: 100%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    container-type: inline-size;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   TOP LOGOS
+============================================================ */
+
+.projector-logos {
+    position: absolute;
+
+    top: 2.5cqw;
+    left: 2.5cqw;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 1.3cqw;
+
+    /*
+       חשוב:
+       אצלנו כל האתר RTL,
+       אבל הלוגואים צריכים להופיע
+       בסדר הגרפי של הרפרנס.
+    */
+    direction: ltr;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+
+.projector-bahad-logo {
+    display: block;
+
+    width: 8cqw;
+    height: auto;
+}
+
+
+.projector-bahad2-logo {
+    display: block;
+
+    width: 14cqw;
+    height: auto;
+}
+
+
+/* ============================================================
+   BOTTOM LOGO
+============================================================ */
+
+.projector-til-logo {
+    position: absolute;
+
+    right: 3cqw;
+    bottom: 2.5cqw;
+
+    width: 12cqw;
+    height: auto;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ============================================================
+   PROJECTOR SCREEN
+
+   Figma:
+   X = 73
+   Y = 246
+   W = 334
+   H = 315
+
+   Frame:
+   479 × 852
+============================================================ */
+
+.projector-screen {
+    position: absolute;
+
+    left: 15.2401%;
+    top: 28.8732%;
+
+    width: 69.7286%;
+    height: 36.9718%;
+
+    z-index: 10;
+
+    overflow: hidden;
+
+    /*
+       מעכשיו cqw בתוך המסך
+       מבוסס על רוחב המסך הלבן עצמו.
+    */
+    container-type: inline-size;
+
+    color: #212121;
+}
+
+
+/* ============================================================
+   SLIDE
+============================================================ */
+
+.projector-slide {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    padding:
+        7cqw 6cqw 10cqw;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   TITLE
+============================================================ */
+
+/* .projector-slide-subtitle {
+    margin: 0 0 2cqw;
+    font-family: "PloniB";
+    font-size: 4.2cqw;
+    line-height: 1.2;
+    color: #222;
+} */
+
+.projector-slide-subtitle {
+    margin-bottom: 3cqw;
+    font-family: "Ploni";
+    font-size: 4.6cqw;
+    line-height: 1.2;
+
+    color: #222;
+}
+
+
+
+.projector-slide-title {
+    margin: 0;
+    font-family: "PloniB";
+    font-size: 6.2cqw;
+    line-height: 1.05;
+    color: #0879B8;
+}
+
+
+.projector-slide-text {
+    margin: 5cqw 0 0;
+    font-family: "Ploni";
+    font-size: 4.6cqw;
+    line-height: 1.45;
+    color: #222;
+}
+
+/* ============================================================
+   SLIDE 1
+============================================================ */
+
+.projector-slide--definition {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    padding: 0;
+
+    text-align: center;
+}
+
+/* קודם כל */
+
+.projector-slide--definition .projector-slide-subtitle {
+    position: absolute;
+
+    top: 14%;
+    left: 0;
+
+    width: 100%;
+
+    margin: 0;
+
+    font-family: "Ploni";
+    font-size: 5.4cqw;
+
+    line-height: 1;
+
+    color: #202020;
+
+    text-align: center;
+}
+
+/* מהי התנגדות? */
+
+.projector-slide--definition .projector-slide-title {
+    position: absolute;
+
+    top: 23%;
+    left: 0;
+
+    width: 100%;
+
+    margin: 0;
+
+    font-family: "PloniB";
+    font-size: 9cqw;
+
+    line-height: 1;
+
+    color: #0879B8;
+
+    text-align: center;
+}
+
+/* הטקסט המרכזי */
+
+.projector-slide-text--definition {
+    position: absolute;
+
+    top: 37%;
+    left: 50%;
+
+    width: 76%;
+
+    margin: 0;
+
+    transform: translateX(-50%);
+
+    font-family: "Ploni";
+    font-size: 5.5cqw;
+
+    line-height: 1.55;
+
+    color: #202020;
+
+    text-align: center;
+}
+
+/* ============================================================
+   SLIDE 2
+   מטרות עיקריות לטיפול בהתנגדויות
+============================================================ */
+
+.projector-slide--goals {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    padding: 0;
+
+    text-align: center;
+}
+
+/* כותרת השקופית */
+
+.projector-slide-title--goals {
+    position: absolute;
+
+    top: 10.5%;
+    left: 50%;
+
+    width: 82%;
+
+    margin: 0;
+
+    transform: translateX(-50%);
+
+    font-family: "PloniB";
+    font-size: 7.1cqw;
+    line-height: 1.15;
+
+    color: #0879B8;
+
+    text-align: center;
+}
+
+/* גריד הכרטיסים */
+
+.projector-goals-grid {
+    position: absolute;
+
+    top: 30%;
+    left: 50%;
+
+    width: 88%;
+    height: 52%;
+
+    transform: translateX(-50%);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.2cqw;
+
+    align-items: stretch;
+
+    /* margin-top: 2%; */
+}
+
+/* כרטיס */
+
+.projector-goal-card {
+    height: 100%;
+
+    background: #ffffff;
+
+    border-radius: 3cqw;
+
+    box-shadow:
+        0 0.7cqw 1.8cqw rgba(0, 0, 0, 0.14);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+/* אזור אייקון */
+
+.projector-goal-card__icon-wrap {
+    height: 28%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 2cqw;
+    padding-bottom: 1.2cqw;
+}
+
+.projector-goal-card__icon {
+    width: 11.5cqw;
+    height: auto;
+
+    object-fit: contain;
+}
+
+/* כותרת של הכרטיס */
+
+.projector-goal-card__header {
+    min-height: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.5cqw 2cqw;
+
+    background: #D9E8F5;
+
+    color: #1F1F1F;
+
+    font-family: "PloniB";
+    font-size: 4.35cqw;
+    line-height: 1.1;
+
+    text-align: center;
+}
+
+/* טקסט בכרטיס */
+
+.projector-goal-card__text {
+    flex: 1;
+
+    margin: 0;
+
+    padding:
+        2.2cqw 2.3cqw 2.6cqw;
+
+    font-family: "Ploni";
+    font-size: 3.85cqw;
+    line-height: 1.42;
+
+    color: #202020;
+
+    text-align: center;
+}
+
+/* אם צריך להבליט מילה בתוך header או text */
+.projector-goal-card__text strong,
+.projector-goal-card__header strong {
+    font-family: "PloniB";
+}
+
+/* ============================================================
+   CARDS SLIDE
+============================================================ */
+
+.projector-slide--cards {
+    padding-top: 7cqw;
+}
+
+
+.projector-slide-title--cards {
+    font-size: 6cqw;
+
+    line-height: 1.05;
+}
+
+
+.projector-cards {
+    width: 100%;
+
+    margin-top: 5cqw;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: stretch;
+    justify-content: center;
+
+    gap: 2.2cqw;
+}
+
+
+.projector-card {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding:
+        4cqw 2.2cqw 3cqw;
+
+    background: rgba(255,
+            255,
+            255,
+            0.94);
+
+    border-radius: 3cqw;
+
+    box-shadow:
+        0 0.6cqw 2.2cqw rgba(0,
+            0,
+            0,
+            0.15);
+}
+
+
+.projector-card-icon {
+    width: 12cqw;
+    height: 12cqw;
+
+    object-fit: contain;
+
+    margin-bottom: 1.4cqw;
+}
+
+
+.projector-card-title {
+    margin: 0;
+
+    font-family: "PloniB";
+
+    font-size: 4.1cqw;
+
+    line-height: 1.15;
+
+    color: #0879B8;
+}
+
+
+.projector-card-text {
+    margin: 2cqw 0 0;
+
+    font-family: "Ploni";
+
+    font-size: 3.45cqw;
+
+    line-height: 1.35;
+
+    color: #252525;
+}
+
+
+/* ============================================================
+   SLIDE 3
+   מדוע החייל מתנגד?
+============================================================ */
+
+.projector-slide--reasons {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    padding: 0;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   כותרת
+============================================================ */
+
+.projector-slide-title--reasons {
+    position: absolute;
+
+    top: 10.5%;
+    left: 50%;
+
+    width: 82%;
+
+    margin: 0;
+
+    transform: translateX(-50%);
+
+    font-family: "PloniB";
+
+    font-size: 7.4cqw;
+    line-height: 1;
+
+    color: #0879B8;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   שני הכרטיסים
+============================================================ */
+
+.projector-reasons-grid {
+    position: absolute;
+
+    top: 21%;
+    left: 50%;
+
+    width: 88%;
+    height: 60%;
+
+    transform: translateX(-50%);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 3.2cqw;
+
+    align-items: stretch;
+}
+
+
+/* ============================================================
+   כרטיס
+============================================================ */
+
+.projector-reason-card {
+    height: 100%;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    border-radius: 3cqw;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0.7cqw 1.8cqw rgba(0,
+            0,
+            0,
+            0.14);
+}
+
+
+/* ============================================================
+   אזור האייקון
+============================================================ */
+
+.projector-reason-card__icon-wrap {
+    height: 24%;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        1.6cqw 1cqw 1cqw;
+}
+
+
+.projector-reason-card__icon {
+    display: block;
+
+    width: 10.5cqw;
+    height: 10.5cqw;
+
+    object-fit: contain;
+}
+
+
+/* ============================================================
+   הפס הכחול / כותרת הכרטיס
+============================================================ */
+
+.projector-reason-card__header {
+    min-height: 16%;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        1.3cqw 1.3cqw;
+
+    background: #D9E8F5;
+
+    color: #1F1F1F;
+
+    font-family: "PloniB";
+
+    font-size: 4cqw;
+
+    line-height: 1.1;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   רשימת הסיבות
+============================================================ */
+
+.projector-reason-card__list {
+    flex: 1;
+
+    margin: 0;
+
+    padding:
+        2cqw 5cqw 2.2cqw 1.8cqw;
+
+    font-family: "Ploni";
+
+    font-size: 3.3cqw;
+
+    line-height: 1.3;
+
+    color: #202020;
+
+    text-align: right;
+
+    overflow: hidden;
+}
+
+
+.projector-reason-card__list li {
+    margin-bottom: 0.9cqw;
+}
+
+
+.projector-reason-card__list li:last-child {
+    margin-bottom: 0;
+}
+
+
+.projector-reason-card__list li::marker {
+    color: #202020;
+
+    font-size: 0.9em;
+}
+
+
+/* ============================================================
+   SLIDE 4
+============================================================ */
+
+.projector-slide--prevention {
+    justify-content: flex-start;
+
+    padding-top: 11cqw;
+}
+
+
+.projector-slide-text--prevention {
+    width: 85%;
+
+    margin-top: 5cqw;
+}
+
+
+.projector-popup-open-button {
+    width: 10cqw;
+    height: 10cqw;
+
+    margin-top: 6cqw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #0879B8;
+
+    color: white;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 8cqw;
+    font-weight: 400;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0.5cqw 1.5cqw rgba(8,
+            121,
+            184,
+            0.3);
+
+    transition:
+        transform 0.18s ease,
+        filter 0.18s ease;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+.projector-popup-open-button:active {
+    transform: scale(0.92);
+}
+
+
+/* ============================================================
+   PREVIOUS BUTTON
+============================================================ */
+
+/* ============================================================
+   PREVIOUS BUTTON
+============================================================ */
+
+.projector-back-button {
+    position: absolute;
+    top: 4cqw;
+    right: 4cqw;
+
+    width: 11.5cqw;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 30;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.15s ease;
+}
+
+.projector-back-button img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    pointer-events: none;
+}
+
+.projector-back-button:active {
+    transform: scale(0.9);
+}
+
+/* ============================================================
+   NEXT BUTTON
+============================================================ */
+
+.projector-next-button {
+    position: absolute;
+
+    left: 4.8cqw;
+    bottom: 4.8cqw;
+
+    min-width: 15cqw;
+
+    padding:
+        1.5cqw 4cqw;
+
+    border: none;
+    border-radius: 1.5cqw;
+
+    background: #075E9C;
+    color: white;
+
+    font-family: "Ploni";
+    font-size: 5.2cqw;
+
+    line-height: 1;
+
+    z-index: 30;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.2s ease,
+        background 0.2s ease;
+}
+
+.projector-next-button:active {
+    transform: scale(0.94);
+}
+
+.projector-next-button.is-disabled,
+.projector-next-button:disabled {
+    background: #AAB7BF;
+
+    opacity: 0.75;
+
+    cursor: default;
+
+    pointer-events: none;
+}
+
+/* ============================================================
+   STANDING CHARACTER
+
+   הדמות מחוץ למסך המקרן.
+============================================================ */
+
+.projector-character {
+    position: absolute;
+
+    right: 8%;
+    bottom: 2.2%;
+
+    width: 30%;
+    height: auto;
+
+    z-index: 25;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   SLIDE 1 CHARACTER BUBBLE
+============================================================ */
+
+.projector-character-bubble {
+    position: absolute;
+    left: 12.5%;
+    bottom: 21%;
+    width: 44%;
+    padding:
+        2cqw 2.5cqw;
+
+    background: rgba(255,
+            255,
+            255,
+            0.97);
+
+    border:
+        0.18cqw solid rgba(70,
+            70,
+            70,
+            0.38);
+
+    border-radius: 2.5cqw;
+
+    box-shadow:
+        0 0.6cqw 2cqw rgba(0,
+            0,
+            0,
+            0.14);
+
+    font-family: "Ploni";
+    font-size: 3.8cqw;
+    line-height: 1.25;
+    text-align: center;
+    color: #292929;
+    z-index: 26;
+    pointer-events: none;
+}
+
+
+/* השפיץ לכיוון הדמות */
+
+.projector-character-bubble::after {
+    content: "";
+
+    position: absolute;
+
+    right: -2cqw;
+    top: 50%;
+
+    width: 4cqw;
+    height: 4cqw;
+
+    background: white;
+
+    border-top:
+        0.18cqw solid rgba(70,
+            70,
+            70,
+            0.38);
+
+    border-right:
+        0.18cqw solid rgba(70,
+            70,
+            70,
+            0.38);
+
+    transform:
+        translateY(-50%) rotate(45deg);
+
+    z-index: -1;
+}
+
+/* ============================================================
+   POPUP OVERLAY
+============================================================ */
+
+.projector-popup-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(20,
+            20,
+            20,
+            0.48);
+
+    backdrop-filter:
+        blur(0.25rem);
+
+    -webkit-backdrop-filter:
+        blur(0.25rem);
+}
+
+
+/* ============================================================
+   POPUP CARD
+============================================================ */
+
+.projector-popup {
+    position: relative;
+
+    width: 77%;
+
+    padding:
+        7cqw 6cqw 5cqw;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.95);
+
+    border-radius: 6cqw;
+
+    box-shadow:
+        0 1.4cqw 5cqw rgba(0,
+            0,
+            0,
+            0.28);
+
+    animation:
+        projectorPopupIn 0.3s ease both;
+}
+
+
+/* ============================================================
+   POPUP CLOSE
+============================================================ */
+
+.projector-popup-close {
+    position: absolute;
+
+    top: 2.4cqw;
+    left: 2.6cqw;
+
+    width: 6cqw;
+    height: 6cqw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #E65B59;
+
+    color: white;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 5cqw;
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+/* ============================================================
+   POPUP TITLE
+============================================================ */
+
+.projector-popup-title {
+    margin:
+        0 0 4cqw;
+
+    font-family: "PloniB";
+
+    font-size: 6cqw;
+
+    line-height: 1.1;
+
+    text-align: center;
+
+    color: #0879B8;
+}
+
+
+/* ============================================================
+   POPUP LIST
+============================================================ */
+
+.projector-popup-list {
+    margin: 0;
+
+    padding-right: 5cqw;
+
+    font-family: "Ploni";
+
+    font-size: 3.4cqw;
+
+    line-height: 1.55;
+
+    text-align: right;
+
+    color: #252525;
+}
+
+
+.projector-popup-list li {
+    margin-bottom: 2cqw;
+}
+
+
+.projector-popup-list li::marker {
+    color: #0879B8;
+
+    font-size: 1.2em;
+}
+
+
+.projector-popup-list strong {
+    font-family: "PloniB";
+
+    color: #0879B8;
+}
+
+
+/* ============================================================
+   POPUP CHARACTER AREA
+============================================================ */
+
+.projector-popup-character-area {
+    position: relative;
+
+    width: 100%;
+    height: 18cqw;
+
+    margin-top: 2cqw;
+}
+
+
+/* ============================================================
+   POPUP CHARACTER
+============================================================ */
+
+.projector-popup-character {
+    position: absolute;
+
+    right: 4cqw;
+    bottom: -1cqw;
+
+    width: 17cqw;
+    height: auto;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   POPUP CHARACTER BUBBLE
+============================================================ */
+
+.projector-popup-character-bubble {
+    position: absolute;
+
+    right: 18cqw;
+    bottom: 2cqw;
+
+    width: 39cqw;
+
+    padding:
+        1.8cqw 2.5cqw;
+
+    background: white;
+
+    border:
+        0.15cqw solid rgba(60,
+            60,
+            60,
+            0.3);
+
+    border-radius: 2cqw;
+
+    box-shadow:
+        0 0.4cqw 1.5cqw rgba(0,
+            0,
+            0,
+            0.12);
+
+    font-family: "Ploni";
+
+    font-size: 3cqw;
+
+    line-height: 1.25;
+
+    text-align: center;
+
+    color: #252525;
+
+    z-index: 1;
+}
+
+
+/* ============================================================
+   POPUP ANIMATION
+============================================================ */
+
+@keyframes projectorPopupIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(2cqw) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+}

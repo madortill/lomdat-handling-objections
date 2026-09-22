@@ -3,25 +3,20 @@
 ============================================================ */
 
 .learning-page {
-    position: fixed;
-    inset: 0;
-
-    width: 100vw;
-    height: 100dvh;
-
+    position: relative;
+    
+    width: 100%;
+    height: 100%;
+    
     display: flex;
-    align-items: center;
     justify-content: center;
-
+    align-items: center;
+    
     overflow: hidden;
-
-    /*
-       נראה רק במסכים שרחבים יותר מהפרופורציה
-       של הלומדה, למשל מחשב.
-    */
+    
+    /* background: #D3EEFF; */
     background: #c6eaff;
 }
-
 
 /* ============================================================
    STAGE
@@ -31,7 +26,7 @@
    הגובה קובע את כל ה-scaling.
 ============================================================ */
 
-.learning-stage {
+/* .learning-stage {
     position: relative;
 
     flex: 0 0 auto;
@@ -47,8 +42,22 @@
     isolation: isolate;
 
     background: #f7f2ec;
-}
+} */
 
+.learning-stage {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    height: 100%;
+
+    width: auto;
+    aspect-ratio: 479 / 852;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
 
 /* ============================================================
    CLASSROOM SCENE
