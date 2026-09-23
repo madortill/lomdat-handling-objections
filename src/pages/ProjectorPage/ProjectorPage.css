@@ -485,7 +485,7 @@
         2.2cqw 2.3cqw 2.6cqw;
 
     font-family: "Ploni";
-    font-size: 3.85cqw;
+    font-size: 4.27cqw;
     line-height: 1.42;
 
     color: #202020;
@@ -639,11 +639,11 @@
 .projector-reasons-grid {
     position: absolute;
 
-    top: 20%;
+    top: 18%;
     left: 50%;
 
     width: 90%;
-    height: 64%;
+    height: 68.5%;
 
     transform: translateX(-50%);
 
@@ -678,7 +678,7 @@
 ============================================================ */
 
 .projector-reason-card__icon-wrap {
-    height: 20%;
+    height: 21%;
     flex-shrink: 0;
 
     display: flex;
@@ -715,7 +715,7 @@
     color: #1F1F1F;
 
     font-family: "PloniB";
-    font-size: 4.1cqw;
+    font-size: 4.3cqw;
     line-height: 1.15;
     text-align: center;
 }
@@ -738,7 +738,7 @@
     list-style: none;
 
     font-family: "Ploni";
-    font-size: 3.9cqw;
+    font-size: 4.2cqw;
     line-height: 1.38;
 
     color: #202020;
@@ -853,8 +853,8 @@
 
 .projector-back-button {
     position: absolute;
-    top: 3cqw;
-    right: 3cqw;
+    top: 2.5cqw;
+    right: 2.5cqw;
 
     width: 10.5cqw;
     padding: 0;
@@ -889,8 +889,8 @@
 .projector-next-button {
     position: absolute;
 
-    left: 4.8cqw;
-    bottom: 4.8cqw;
+    left: 2.5cqw;
+    bottom: 2.5cqw;
 
     min-width: 15cqw;
 
