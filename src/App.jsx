@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import OpeningPage from "./pages/OpeningPage/OpeningPage";
 import LearningPage from "./pages/LearningPage/LearningPage";
 import ProjectorPage from "./pages/ProjectorPage/ProjectorPage";
+import FloorPage from "./pages/FloorPage/FloorPage";
 // import EndPage from "./pages/EndPage/EndPage";
 
 import "./css/App.css";
@@ -37,6 +38,8 @@ function App() {
         <Route path="/learning" element={<LearningPage />} />
 
         <Route path="/learning/projector" element={<ProjectorPage />} />
+
+        <Route path="/learning/floor" element={<FloorPage />} />
 
         {/* <Route
           path="/end"

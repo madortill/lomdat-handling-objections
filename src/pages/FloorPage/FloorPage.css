@@ -1,0 +1,806 @@
+/* ============================================================
+   FLOOR PAGE
+============================================================ */
+
+.floor-page {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #c6eaff;
+}
+
+
+/* ============================================================
+   STAGE
+   479 × 852
+============================================================ */
+
+.floor-stage {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    height: 100%;
+
+    width: auto;
+
+    aspect-ratio: 479 / 852;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    container-type: inline-size;
+}
+
+
+/* ============================================================
+   BACKGROUND
+============================================================ */
+
+.floor-background {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: fill;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   SAFE AREA
+   393 × 852
+============================================================ */
+
+.floor-safe-area {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 82.0459%;
+    height: 100%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    container-type: inline-size;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   LOGOS
+============================================================ */
+
+.floor-logos {
+    position: absolute;
+
+    top: 2.5cqw;
+    left: 2.5cqw;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 1.3cqw;
+
+    direction: ltr;
+
+    pointer-events: none;
+}
+
+
+.floor-bahad-logo {
+    display: block;
+
+    width: 8cqw;
+    height: auto;
+}
+
+
+.floor-bahad2-logo {
+    display: block;
+
+    width: 14cqw;
+    height: auto;
+}
+
+
+.floor-til-logo {
+    position: absolute;
+
+    right: 3cqw;
+    bottom: 2.5cqw;
+
+    width: 12cqw;
+    height: auto;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   FLOOR CONTENT AREA
+
+   X 72 / 479  = 15.03%
+   Y 285 / 852 = 33.45%
+   W 336 / 479 = 70.15%
+   H 332 / 852 = 38.97%
+============================================================ */
+
+.floor-content-area {
+    position: absolute;
+
+    left: 15.0313%;
+    top: 33.4507%;
+
+    width: 70.1461%;
+    height: 38.9671%;
+
+    z-index: 10;
+
+    overflow: hidden;
+
+    container-type: inline-size;
+
+    transition:
+        background 0.28s ease;
+}
+
+
+/* ============================================================
+   BACK BUTTON
+============================================================ */
+
+.floor-back-button {
+    position: absolute;
+
+    top: 2.5cqw;
+    right: 2.5cqw;
+
+    width: 8.5cqw;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    transition:
+        transform 0.15s ease;
+}
+
+
+.floor-back-button img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    pointer-events: none;
+}
+
+
+.floor-back-button:active {
+    transform: scale(0.9);
+}
+
+
+/* ============================================================
+   SWIPE AREA
+============================================================ */
+
+.floor-carousel-swipe-area {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+
+    /*
+       מאפשר Swipe אופקי,
+       בלי שהדפדפן ינסה לגרור תמונות.
+    */
+    touch-action: pan-y;
+
+    user-select: none;
+
+    cursor: grab;
+}
+
+
+.floor-carousel-swipe-area:active {
+    cursor: grabbing;
+}
+
+
+/* ============================================================
+   SLIDE
+============================================================ */
+
+.floor-slide {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding:
+        13cqw 13cqw 14cqw;
+
+    text-align: center;
+
+    transition:
+        background 0.25s ease;
+}
+
+/* ============================================================
+   CAROUSEL SLIDE ANIMATION
+============================================================ */
+
+.floor-slide {
+    will-change: transform;
+}
+
+/* ============================================================
+   CAROUSEL SLIDE ANIMATION
+============================================================ */
+
+.floor-slide {
+    will-change: transform;
+}
+
+/*
+   מעבר שמאלה:
+   החדשה נכנסת משמאל,
+   הישנה יוצאת ימינה.
+*/
+
+.floor-slide.is-leaving-left {
+    z-index: 2;
+    animation: floor-slide-leave-to-right 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.floor-slide.is-entering-from-right {
+    z-index: 3;
+    animation: floor-slide-enter-from-left 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/*
+   מעבר ימינה:
+   החדשה נכנסת מימין,
+   הישנה יוצאת שמאלה.
+*/
+
+.floor-slide.is-leaving-right {
+    z-index: 2;
+    animation: floor-slide-leave-to-left 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.floor-slide.is-entering-from-left {
+    z-index: 3;
+    animation: floor-slide-enter-from-right 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes floor-slide-leave-to-right {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes floor-slide-enter-from-left {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes floor-slide-leave-to-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes floor-slide-enter-from-right {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* ============================================================
+   DIFFERENT TILE COLORS
+============================================================ */
+
+.floor-slide--intro {
+    background: rgba(255, 255, 255, 0.41);
+}
+
+
+.floor-slide--symptom {
+    background: rgba(170, 194, 127, 0.4);
+}
+
+
+.floor-slide--perspective {
+    background: rgba(240, 218, 92, 0.4);
+}
+
+
+.floor-slide--proportion {
+    background: rgba(255, 148, 54, 0.4);
+}
+
+
+.floor-slide--stability {
+    background: rgba(99, 184, 255, 0.4);
+}
+
+
+/* ============================================================
+   SLIDE 1
+============================================================ */
+
+.floor-intro-title {
+    margin:
+        5cqw 0 0;
+
+    width: 82%;
+
+    font-family: "PloniB";
+
+    font-size: 8.1cqw;
+
+    line-height: 1.25;
+
+    color: #0780B6;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   INTRO CHARACTER + BUBBLE
+============================================================ */
+
+.floor-intro-tip {
+    position: relative;
+
+    width: 100%;
+    height: 32cqw;
+
+    margin-top: 5cqw;
+}
+
+
+.floor-intro-character {
+    position: absolute;
+
+    right: 0;
+    bottom: -7cqw;
+
+    width: 38cqw;
+    height: auto;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+.floor-intro-bubble {
+    position: absolute;
+
+    right: 31cqw;
+    bottom: 12cqw;
+
+    width: 42cqw;
+
+    padding:
+        1.5cqw 2.4cqw;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.94);
+
+    border:
+        0.16cqw solid rgba(75,
+            75,
+            75,
+            0.3);
+
+    border-radius: 2.2cqw;
+
+    box-shadow:
+        0 0.4cqw 1.4cqw rgba(0,
+            0,
+            0,
+            0.12);
+
+    font-family: "Ploni";
+
+    font-size: 4.7cqw;
+
+    line-height: 1.2;
+
+    color: #282828;
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+
+.floor-intro-bubble::after {
+    content: "";
+
+    position: absolute;
+
+    right: -2cqw;
+    top: 60%;
+
+    width: 4cqw;
+    height: 4cqw;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.94);
+
+    border-top:
+        0.16cqw solid rgba(75,
+            75,
+            75,
+            0.3);
+
+    border-right:
+        0.16cqw solid rgba(75,
+            75,
+            75,
+            0.3);
+
+    transform:
+        translateY(-50%) rotate(45deg);
+}
+
+
+/* ============================================================
+   SLIDES 2-5 ICON
+============================================================ */
+
+.floor-slide-icon {
+    display: block;
+
+    width: 18cqw;
+    height: 18cqw;
+
+    margin-top: 3cqw;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ============================================================
+   NORMAL TEXT
+============================================================ */
+
+.floor-slide-lead {
+    width: 94%;
+
+    margin:
+        5cqw 0 0;
+
+    font-family: "Ploni";
+
+    font-size: 6cqw;
+
+    line-height: 1.35;
+
+    color: #282828;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   EMPHASIZED TEXT
+============================================================ */
+
+.floor-slide-highlight {
+    width: 100%;
+
+    margin:
+        3.5cqw 0 0;
+
+    font-family: "PloniB";
+
+    font-size: 6.8cqw;
+
+    line-height: 1.3;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   DIFFERENT TEXT COLORS
+============================================================ */
+
+.floor-slide--symptom .floor-slide-highlight {
+    color: #53681E;
+}
+
+
+.floor-slide--perspective .floor-slide-highlight {
+    color: #B3780E;
+}
+
+
+.floor-slide--proportion .floor-slide-highlight {
+    color: #A95317;
+}
+
+
+.floor-slide--stability .floor-slide-highlight {
+    color: #0874B2;
+}
+
+
+/* ============================================================
+   CAROUSEL ARROWS
+============================================================ */
+
+.floor-carousel-arrow {
+    position: absolute;
+
+    top: 51%;
+
+    transform:
+        translateY(-50%);
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #087FB6;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 8cqw;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 40;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+}
+
+
+.floor-carousel-arrow--left {
+    left: 1.2cqw;
+}
+
+
+.floor-carousel-arrow--right {
+    right: 1.2cqw;
+}
+
+
+.floor-carousel-arrow:active {
+    transform:
+        translateY(-50%) scale(0.88);
+}
+
+
+/* ============================================================
+   DOTS
+============================================================ */
+
+.floor-carousel-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 2.8cqw;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3cqw;
+
+    z-index: 45;
+}
+
+
+.floor-carousel-dot {
+    width: 3.3cqw;
+    height: 3.3cqw;
+
+    padding: 0;
+
+    border:
+        0.18cqw solid rgba(255,
+            255,
+            255,
+            0.65);
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0.25cqw 0.6cqw rgba(0,
+            0,
+            0,
+            0.08);
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease;
+}
+
+
+/* כבר נצפתה */
+
+.floor-carousel-dot.is-visited {
+    background: #A9D5E6;
+}
+
+
+/* הנוכחית */
+
+.floor-carousel-dot.is-current {
+    background: #087FB6;
+
+    transform:
+        scale(1.1);
+}
+
+
+/* ============================================================
+   COMPLETE BUTTON
+============================================================ */
+
+.floor-complete-button {
+    position: absolute;
+
+    left: 2.5cqw;
+    bottom: 2.5cqw;
+
+    min-width: 13cqw;
+
+    padding:
+        1.3cqw 3.4cqw;
+
+    border: none;
+
+    border-radius: 1.4cqw;
+
+    background: #075E9C;
+
+    color: white;
+
+    font-family: "Ploni";
+
+    font-size: 4.3cqw;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.floor-complete-button:active {
+    transform:
+        scale(0.94);
+}
+
+
+.floor-complete-button.is-disabled,
+.floor-complete-button:disabled {
+    background: #AAB7BF;
+
+    opacity: 0.72;
+
+    cursor: default;
+
+    pointer-events: none;
+}

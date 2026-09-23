@@ -37,7 +37,7 @@ import backButton from "../../assets/projector-back-button.svg";
 
 import bahad from "../../assets/bahad.png";
 import bahad2 from "../../assets/bahad2.svg";
-import til from "../../assets/til.svg";
+import til from "../../assets/til-black.svg";
 
 /* ============================================================
    Progress
