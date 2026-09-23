@@ -604,65 +604,55 @@
     height: 100%;
 
     display: block;
-
     padding: 0;
 
     text-align: center;
 }
 
-
 /* ============================================================
-   כותרת
+   כותרת ראשית
 ============================================================ */
 
 .projector-slide-title--reasons {
     position: absolute;
 
-    top: 10.5%;
+    top: 8.5%;
     left: 50%;
 
-    width: 82%;
-
+    width: 84%;
     margin: 0;
 
     transform: translateX(-50%);
 
     font-family: "PloniB";
-
-    font-size: 7.4cqw;
-    line-height: 1;
-
+    font-size: 6.6cqw;
+    line-height: 1.1;
     color: #0879B8;
 
     text-align: center;
 }
 
-
 /* ============================================================
-   שני הכרטיסים
+   גריד הכרטיסיות
 ============================================================ */
 
 .projector-reasons-grid {
     position: absolute;
 
-    top: 21%;
+    top: 20%;
     left: 50%;
 
-    width: 88%;
-    height: 60%;
+    width: 90%;
+    height: 64%;
 
     transform: translateX(-50%);
 
     display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 3.2cqw;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2cqw;
 
     align-items: stretch;
 }
-
 
 /* ============================================================
    כרטיס
@@ -670,88 +660,68 @@
 
 .projector-reason-card {
     height: 100%;
-
     min-width: 0;
 
     display: flex;
     flex-direction: column;
 
     background: #ffffff;
-
-    border-radius: 3cqw;
-
+    border-radius: 2.8cqw;
     overflow: hidden;
 
     box-shadow:
-        0 0.7cqw 1.8cqw rgba(0,
-            0,
-            0,
-            0.14);
+        0 0.6cqw 1.6cqw rgba(0, 0, 0, 0.14);
 }
 
-
 /* ============================================================
-   אזור האייקון
+   אזור אייקון
 ============================================================ */
 
 .projector-reason-card__icon-wrap {
-    height: 24%;
-
+    height: 20%;
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    padding:
-        1.6cqw 1cqw 1cqw;
+    padding: 1cqw 1cqw 0.5cqw;
 }
-
 
 .projector-reason-card__icon {
     display: block;
 
-    width: 10.5cqw;
-    height: 10.5cqw;
+    width: 9cqw;
+    height: 9cqw;
 
     object-fit: contain;
 }
 
-
 /* ============================================================
-   הפס הכחול / כותרת הכרטיס
+   כותרת בתוך הכרטיס
 ============================================================ */
 
 .projector-reason-card__header {
-    min-height: 16%;
-
+    min-height: 14%;
     flex-shrink: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    padding:
-        1.3cqw 1.3cqw;
+    padding: 1.2cqw 1.2cqw;
 
     background: #D9E8F5;
-
     color: #1F1F1F;
 
     font-family: "PloniB";
-
-    font-size: 4cqw;
-
-    line-height: 1.1;
-
+    font-size: 4.1cqw;
+    line-height: 1.15;
     text-align: center;
 }
 
-
 /* ============================================================
-   רשימת הסיבות
+   רשימה
 ============================================================ */
 
 .projector-reason-card__list {
@@ -760,13 +730,16 @@
     margin: 0;
 
     padding:
-        2cqw 5cqw 2.2cqw 1.8cqw;
+        1.6cqw
+        2cqw
+        1.6cqw
+        1.5cqw;
+
+    list-style: none;
 
     font-family: "Ploni";
-
-    font-size: 3.3cqw;
-
-    line-height: 1.3;
+    font-size: 3.9cqw;
+    line-height: 1.38;
 
     color: #202020;
 
@@ -775,23 +748,34 @@
     overflow: hidden;
 }
 
-
 .projector-reason-card__list li {
-    margin-bottom: 0.9cqw;
+    position: relative;
+
+    margin-bottom: 0.7cqw;
+
+    /*
+       מקום קטן בלבד לנקודה
+    */
+    padding-right: 2.5cqw;
 }
 
+.projector-reason-card__list li::before {
+    content: "•";
+
+    position: absolute;
+
+    right: 0.3cqw;
+    top: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+
+    color: #202020;
+}
 
 .projector-reason-card__list li:last-child {
     margin-bottom: 0;
 }
-
-
-.projector-reason-card__list li::marker {
-    color: #202020;
-
-    font-size: 0.9em;
-}
-
 
 /* ============================================================
    SLIDE 4
@@ -803,13 +787,11 @@
     padding-top: 11cqw;
 }
 
-
 .projector-slide-text--prevention {
     width: 85%;
 
     margin-top: 5cqw;
 }
-
 
 .projector-popup-open-button {
     width: 10cqw;
@@ -871,10 +853,10 @@
 
 .projector-back-button {
     position: absolute;
-    top: 4cqw;
-    right: 4cqw;
+    top: 3cqw;
+    right: 3cqw;
 
-    width: 11.5cqw;
+    width: 10.5cqw;
     padding: 0;
     border: none;
     background: transparent;
@@ -963,9 +945,9 @@
     position: absolute;
 
     right: 8%;
-    bottom: 2.2%;
+    bottom: 1.7%;
 
-    width: 30%;
+    width: 29%;
     height: auto;
 
     z-index: 25;
