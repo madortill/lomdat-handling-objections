@@ -116,6 +116,9 @@
 
     width: 8cqw;
     height: auto;
+
+    filter:
+        drop-shadow(0 0 0.45rem rgba(255, 255, 255, 0.95));
 }
 
 
@@ -124,6 +127,9 @@
 
     width: 14cqw;
     height: auto;
+
+    filter:
+        drop-shadow(0 0 0.45rem rgba(255, 255, 255, 0.95));
 }
 
 
@@ -140,6 +146,9 @@
 
     user-select: none;
     -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(0 0 0.45rem rgba(255, 255, 255, 0.95));
 }
 
 
@@ -433,10 +442,10 @@
 .floor-intro-character {
     position: absolute;
 
-    right: 0;
-    bottom: -7cqw;
+    right: -4cqw;
+    bottom: -9cqw;
 
-    width: 38cqw;
+    width: 40cqw;
     height: auto;
 
     z-index: 3;
@@ -451,10 +460,10 @@
 .floor-intro-bubble {
     position: absolute;
 
-    right: 31cqw;
-    bottom: 12cqw;
+    right: 28cqw;
+    bottom: 11cqw;
 
-    width: 42cqw;
+    width: 44cqw;
 
     padding:
         1.5cqw 2.4cqw;
@@ -481,7 +490,7 @@
 
     font-family: "Ploni";
 
-    font-size: 4.7cqw;
+    font-size: 4.5cqw;
 
     line-height: 1.2;
 
@@ -638,7 +647,7 @@
         Arial,
         sans-serif;
 
-    font-size: 8cqw;
+    font-size: 13cqw;
 
     line-height: 1;
 

@@ -16,7 +16,7 @@ import backButton from "../../assets/projector-back-button.svg";
 
 import bahad from "../../assets/bahad.png";
 import bahad2 from "../../assets/bahad2.svg";
-import til from "../../assets/til.svg";
+import til from "../../assets/til-black.svg";
 
 import {
   getLearningProgress,
@@ -310,9 +310,11 @@ function FloorPage() {
 
           <div className="floor-intro-tip">
             <div className="floor-intro-bubble">
+              החליקו על המסך או
+              <br />
               לחצו על החיצים
               <br />
-              כדי ללמוד
+              כדי ללמוד 
             </div>
 
             <img

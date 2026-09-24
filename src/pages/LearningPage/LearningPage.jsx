@@ -253,7 +253,11 @@ function LearningPage() {
             draggable="false"
           />
 
-          <div className="learning-home-sentence">- לחצו על האלמנטים המהבהבים -</div>
+          {progress.introSeen && (
+            <div className="learning-home-sentence">
+              - לחצו על האלמנטים המהבהבים -
+            </div>
+          )}
 
           {/* =====================
                 Classroom objects
