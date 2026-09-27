@@ -51,7 +51,7 @@ import {
 } from "../../utils/learningProgress";
 
 const LAST_SLIDE_INDEX = 3;
-const EXIT_DURATION = 620;
+const EXIT_DURATION = 900;
 
 /* ============================================================
    Projector Page

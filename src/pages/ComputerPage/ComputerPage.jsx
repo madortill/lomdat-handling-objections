@@ -132,7 +132,7 @@ const COMPUTER_CARDS = [
 const LAST_CARD_INDEX = COMPUTER_CARDS.length - 1;
 const CARD_WIDTH_RATIO = 312 / 479;
 const CARD_GAP_RATIO = 12 / 479;
-const EXIT_DURATION = 620;
+const EXIT_DURATION = 900;
 
 function ComputerPage() {
   const navigate = useNavigate();

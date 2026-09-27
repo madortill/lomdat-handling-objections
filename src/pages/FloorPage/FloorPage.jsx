@@ -62,7 +62,7 @@ const FLOOR_SLIDES = [
 
 const LAST_SLIDE_INDEX = FLOOR_SLIDES.length - 1;
 const ANIMATION_DURATION = 380;
-const EXIT_DURATION = 620;
+const EXIT_DURATION = 900;
 
 function FloorPage() {
   const navigate = useNavigate();

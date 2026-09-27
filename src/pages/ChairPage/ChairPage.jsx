@@ -50,7 +50,7 @@ const CHAIR_CARDS = [
 
 const LAST_CARD_INDEX = CHAIR_CARDS.length - 1;
 const CARD_ANIMATION_DURATION = 460;
-const EXIT_DURATION = 620;
+const EXIT_DURATION = 900;
 
 function ChairPage() {
   const navigate = useNavigate();
