@@ -94,6 +94,8 @@ function ProjectorPage() {
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const [showNextReadyCue, setShowNextReadyCue] = useState(false);
+
   /* ============================================================
      Character safety
   ============================================================ */
@@ -113,6 +115,18 @@ function ProjectorPage() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (!showNextReadyCue) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      setShowNextReadyCue(false);
+    }, 1800);
+
+    return () => clearTimeout(timeoutId);
+  }, [showNextReadyCue]);
 
   /* ============================================================
      Character assets
@@ -213,6 +227,10 @@ function ProjectorPage() {
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
+
+    if (currentSlide === LAST_SLIDE_INDEX && hasOpenedPopup) {
+      setShowNextReadyCue(true);
+    }
   };
 
   /* ============================================================
@@ -495,7 +513,12 @@ function ProjectorPage() {
 
               <button
                 type="button"
-                className="projector-popup-open-button"
+                className={[
+                  "projector-popup-open-button",
+                  !hasOpenedPopup ? "is-attention" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
                 onClick={handleOpenPopup}
                 aria-label="פתיחת מידע נוסף"
               >
@@ -512,10 +535,10 @@ function ProjectorPage() {
             type="button"
             className={[
               "projector-next-button",
-
               currentSlide === LAST_SLIDE_INDEX && !hasOpenedPopup
                 ? "is-disabled"
                 : "",
+              showNextReadyCue ? "is-ready" : "",
             ]
               .filter(Boolean)
               .join(" ")}

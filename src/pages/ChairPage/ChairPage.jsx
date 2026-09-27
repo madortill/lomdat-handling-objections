@@ -96,6 +96,8 @@ function ChairPage() {
   const [transitionData, setTransitionData] = useState(null);
   const [isExiting, setIsExiting] = useState(false);
 
+  const [showNextReadyCue, setShowNextReadyCue] = useState(false);
+
   const isAnimating = transitionData !== null;
 
   useEffect(() => {
@@ -226,6 +228,28 @@ function ChairPage() {
 
   const allCardsVisited =
     chairAlreadyCompleted || visitedCards.length === CHAIR_CARDS.length;
+
+  const wasAllCardsVisitedRef = useRef(allCardsVisited);
+
+  useEffect(() => {
+    if (!wasAllCardsVisitedRef.current && allCardsVisited) {
+      setShowNextReadyCue(true);
+    }
+
+    wasAllCardsVisitedRef.current = allCardsVisited;
+  }, [allCardsVisited]);
+
+  useEffect(() => {
+    if (!showNextReadyCue) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      setShowNextReadyCue(false);
+    }, 1800);
+
+    return () => clearTimeout(timeoutId);
+  }, [showNextReadyCue]);
 
   const handleFinish = () => {
     if (!allCardsVisited || isExiting) {
@@ -398,6 +422,7 @@ function ChairPage() {
           className={[
             "chair-finish-button",
             !allCardsVisited ? "is-disabled" : "",
+            showNextReadyCue ? "is-ready" : "",
           ]
             .filter(Boolean)
             .join(" ")}

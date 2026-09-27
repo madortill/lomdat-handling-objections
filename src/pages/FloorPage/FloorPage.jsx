@@ -117,6 +117,8 @@ function FloorPage() {
 
   const [isExiting, setIsExiting] = useState(false);
 
+  const [showNextReadyCue, setShowNextReadyCue] = useState(false);
+
   const isAnimating = transitionData !== null;
 
   useEffect(() => {
@@ -274,6 +276,28 @@ function FloorPage() {
 
   const allSlidesVisited =
     floorAlreadyCompleted || visitedSlides.length === FLOOR_SLIDES.length;
+
+  const wasAllSlidesVisitedRef = useRef(allSlidesVisited);
+
+  useEffect(() => {
+    if (!wasAllSlidesVisitedRef.current && allSlidesVisited) {
+      setShowNextReadyCue(true);
+    }
+
+    wasAllSlidesVisitedRef.current = allSlidesVisited;
+  }, [allSlidesVisited]);
+
+  useEffect(() => {
+    if (!showNextReadyCue) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      setShowNextReadyCue(false);
+    }, 1800);
+
+    return () => clearTimeout(timeoutId);
+  }, [showNextReadyCue]);
 
   const handleCompleteFloor = () => {
     if (!allSlidesVisited || isExiting) {
@@ -491,6 +515,7 @@ function FloorPage() {
             className={[
               "floor-complete-button",
               !allSlidesVisited ? "is-disabled" : "",
+              showNextReadyCue ? "is-ready" : "",
             ]
               .filter(Boolean)
               .join(" ")}
