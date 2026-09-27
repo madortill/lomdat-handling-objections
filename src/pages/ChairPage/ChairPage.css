@@ -1,0 +1,392 @@
+.chair-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #c6eaff;
+}
+
+.chair-stage {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 479 / 852;
+    overflow: hidden;
+    isolation: isolate;
+    container-type: inline-size;
+}
+
+.chair-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: fill;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.chair-safe-area {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 82.0459%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: 40;
+    container-type: inline-size;
+    pointer-events: none;
+}
+
+.chair-logos {
+    position: absolute;
+    top: 2.5cqw;
+    left: 2.5cqw;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.3cqw;
+    direction: ltr;
+}
+
+.chair-bahad-logo {
+    display: block;
+    width: 8cqw;
+    height: auto;
+}
+
+.chair-bahad2-logo {
+    display: block;
+    width: 14cqw;
+    height: auto;
+}
+
+.chair-back-button {
+    position: absolute;
+    top: 3.5cqw;
+    right: 3.5cqw;
+    width: 11cqw;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chair-back-button img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+.chair-til-logo {
+    position: absolute;
+    right: 3cqw;
+    bottom: 2.5cqw;
+    width: 12cqw;
+    height: auto;
+    pointer-events: none;
+}
+
+.chair-heading {
+    position: absolute;
+    top: 22.5%;
+    left: 50%;
+    width: 68%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    color: white;
+}
+
+.chair-heading-pretitle {
+    margin: 0;
+    font-family: "Ploni";
+    font-size: 3.98cqw;
+    line-height: 1.2;
+}
+
+.chair-heading-title {
+    margin: 1.5cqw 0 0;
+    font-family: "PloniB";
+    font-size: 6.3cqw;
+    line-height: 1;
+    color: #59C5E7;
+}
+
+.chair-heading-note {
+    margin: 1.8cqw 0 0;
+    font-family: "Ploni";
+    font-size: 3.4cqw;
+    line-height: 1.2;
+}
+
+.chair-card-viewport {
+    position: absolute;
+    left: 25.26096%;
+    top: 44%;
+    width: 48.68685%;
+    height: 25.40845%;
+    z-index: 20;
+    overflow: visible;
+    touch-action: pan-y;
+    user-select: none;
+    cursor: grab;
+    container-type: inline-size;
+}
+
+.chair-card-viewport:active {
+    cursor: grabbing;
+}
+
+.chair-principle-card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7.5cqw 8cqw 6.5cqw;
+    border-radius: 8cqw;
+    background: rgba(235, 239, 248, 0.95);
+    box-shadow:
+        0 1.6cqw 4.5cqw rgba(0, 0, 0, 0.16),
+        inset 0 0 0 0.3cqw rgba(255, 255, 255, 0.65);
+    text-align: center;
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+.chair-principle-number {
+    flex: 0 0 auto;
+    width: 15.5cqw;
+    height: 15.5cqw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.2cqw solid #0879B8;
+    border-radius: 50%;
+    color: #0879B8;
+    font-family: "PloniB";
+    font-size: 9.5cqw;
+    line-height: 1;
+}
+
+.chair-principle-title {
+    margin: 2cqw 0 0;
+    font-family: "PloniB";
+    font-size: 10.7cqw;
+    line-height: 1.05;
+    color: #075E9C;
+}
+
+.chair-principle-text {
+    width: 94%;
+    margin: 2.5cqw 0 0;
+    font-family: "Ploni";
+    font-size: 7.8cqw;
+    line-height: 1.28;
+    color: #202020;
+    text-align: center;
+}
+
+.chair-principle-card.is-leaving-left {
+    z-index: 3;
+    animation:
+        chairCardLeaveLeft 0.46s cubic-bezier(0.55, 0, 0.25, 1) forwards;
+}
+
+.chair-principle-card.is-entering-from-right {
+    z-index: 4;
+    animation:
+        chairCardEnterRight 0.46s cubic-bezier(0.2, 0.9, 0.25, 1) forwards;
+}
+
+.chair-principle-card.is-leaving-right {
+    z-index: 3;
+    animation:
+        chairCardLeaveRight 0.46s cubic-bezier(0.55, 0, 0.25, 1) forwards;
+}
+
+.chair-principle-card.is-entering-from-left {
+    z-index: 4;
+    animation:
+        chairCardEnterLeft 0.46s cubic-bezier(0.2, 0.9, 0.25, 1) forwards;
+}
+
+@keyframes chairCardLeaveRight {
+    0% {
+        transform: translateX(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-135%) rotate(-4deg) scale(0.94);
+        opacity: 0;
+    }
+}
+
+@keyframes chairCardEnterLeft {
+    0% {
+        transform: translateX(135%) rotate(4deg) scale(0.94);
+        opacity: 0;
+    }
+
+    72% {
+        transform: translateX(-4%) rotate(-0.6deg) scale(1.01);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes chairCardLeaveLeft {
+    0% {
+        transform: translateX(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(135%) rotate(4deg) scale(0.94);
+        opacity: 0;
+    }
+}
+
+@keyframes chairCardEnterRight {
+    0% {
+        transform: translateX(-135%) rotate(-4deg) scale(0.94);
+        opacity: 0;
+    }
+
+    72% {
+        transform: translateX(4%) rotate(0.6deg) scale(1.01);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.chair-arrow {
+    position: absolute;
+    top: 54.5%;
+    z-index: 30;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 7.4cqw;
+    line-height: 1;
+    cursor: pointer;
+    filter: drop-shadow(0 0.3cqw 0.5cqw rgba(0, 0, 0, .12));
+    transition:
+        transform .15s ease,
+        opacity .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chair-arrow--left {
+    left: 14%;
+}
+
+.chair-arrow--right {
+    right: 14%;
+}
+
+.chair-arrow:active:not(:disabled) {
+    transform: scale(.88);
+}
+
+.chair-arrow:disabled {
+    opacity: .55;
+    cursor: default;
+}
+
+.chair-dots {
+    position: absolute;
+    left: 50%;
+    top: 71.3%;
+    transform: translateX(-50%);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6cqw;
+}
+
+.chair-dot {
+    width: 1.8cqw;
+    height: 1.8cqw;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .82);
+    cursor: pointer;
+    transition:
+        transform .18s ease,
+        background .18s ease,
+        box-shadow .18s ease;
+}
+
+.chair-dot.is-visited {
+    background: #76CEE8;
+}
+
+.chair-dot.is-current {
+    background: #0879B8;
+    transform: scale(1.25);
+    box-shadow: 0 0 1cqw rgba(8, 121, 184, .55);
+}
+
+.chair-dot:disabled {
+    cursor: default;
+}
+
+.chair-finish-button {
+    position: absolute;
+    left: 14%;
+    bottom: 2.8%;
+    z-index: 40;
+    min-width: 13cqw;
+    padding: 1.2cqw 3.3cqw;
+    border: none;
+    border-radius: 1.4cqw;
+    background: #075E9C;
+    color: white;
+    font-family: "Ploni";
+    font-size: 4.2cqw;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        transform .15s ease,
+        opacity .2s ease,
+        background .2s ease;
+}
+
+.chair-finish-button:active:not(:disabled) {
+    transform: scale(.94);
+}
+
+.chair-finish-button.is-disabled,
+.chair-finish-button:disabled {
+    background: #7FA8BE;
+    opacity: .72;
+    cursor: default;
+}

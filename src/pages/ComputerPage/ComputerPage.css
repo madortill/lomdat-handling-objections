@@ -14,36 +14,6 @@
 }
 
 /* ============================================================
-   RETURN UNDERLAY
-============================================================ */
-
-.computer-return-underlay {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: #c6eaff;
-}
-
-.computer-return-stage {
-    position: relative;
-    height: 100%;
-    width: auto;
-    aspect-ratio: 479 / 852;
-    overflow: hidden;
-}
-
-.computer-return-stage img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: fill;
-}
-
-/* ============================================================
    STAGE
 ============================================================ */
 
@@ -62,7 +32,11 @@
 
 .computer-stage.is-exiting {
     pointer-events: none;
-    animation: computerPageExitUp 0.56s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation:
+        computerPageExitUp
+        0.56s
+        cubic-bezier(0.65, 0, 0.35, 1)
+        forwards;
 }
 
 @keyframes computerPageExitUp {
@@ -170,19 +144,19 @@
 }
 
 .computer-screen-text {
-    width: 85%;
+    /* width: 85%; */
     margin: 0;
     font-family: "Ploni";
-    font-size: 4.4cqw;
+    font-size: 6cqw;
     line-height: 1.35;
     color: #232323;
 }
 
 .computer-screen-title {
-    width: 90%;
+    /* width: 90%; */
     margin: 3cqw 0 0;
     font-family: "PloniB";
-    font-size: 7cqw;
+    font-size: 9cqw;
     line-height: 1.1;
     color: #0879B8;
 }
@@ -191,7 +165,7 @@
     position: absolute;
     top: 2.5cqw;
     right: 2.5cqw;
-    width: 8.5cqw;
+    width: 10cqw;
     padding: 0;
     border: none;
     background: transparent;
@@ -209,14 +183,14 @@
 .computer-screen-next {
     position: absolute;
     left: 2.5cqw;
-    bottom: 2.5cqw;
+    bottom: 5.5cqw;
     padding: 1.2cqw 3.2cqw;
     border: none;
     border-radius: 1.3cqw;
     background: #075E9C;
     color: white;
     font-family: "Ploni";
-    font-size: 4.2cqw;
+    font-size: 5.2cqw;
     line-height: 1;
     cursor: pointer;
     z-index: 30;
@@ -251,7 +225,7 @@
 .computer-cards-back {
     position: absolute;
     top: 2.5cqw;
-    right: 2.5cqw;
+    right: 12.5cqw;
     width: 10cqw;
     padding: 0;
     border: none;
@@ -269,7 +243,7 @@
 
 .computer-cards-heading {
     position: absolute;
-    top: 11cqw;
+    top: 17cqw;
     left: 50%;
 
     width: 72%;
@@ -350,14 +324,15 @@
 
 .computer-response-card {
     position: absolute;
-    top: 24.6%;
+    top: 18.6%;
     left: 50%;
     width: 65.1357%;
-    height: 55.2817%;
+    height: 59.2817%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 7cqw 5cqw 4cqw;
     border-radius: 4cqw;
     background: rgba(255, 255, 255, 0.93);
@@ -384,15 +359,15 @@
     width: 100%;
     margin: 0;
     font-family: "PloniB";
-    font-size: 6.2cqw;
+    font-size: 5.9cqw;
     line-height: 1.1;
     color: var(--card-accent);
     text-align: center;
 }
 
 .computer-response-text {
-    width: 92%;
-    margin: 5cqw 0 0;
+    width: 98%;
+    margin: 3cqw 0 0;
     font-family: "Ploni";
     font-size: 3.75cqw;
     line-height: 1.45;
@@ -405,15 +380,15 @@
     flex: 1;
     min-height: 0;
     margin-top: 5cqw;
-    border: 0.25cqw solid rgba(95, 174, 213, 0.45);
-    border-radius: 2.7cqw;
-    overflow: hidden;
-    background: #edf5f8;
+    /* border: 0.25cqw solid rgba(95, 174, 213, 0.45); */
+    /* border-radius: 2.7cqw; */
+    /* overflow: hidden; */
+    /* background: #edf5f8; */
 }
 
 .computer-response-image {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     display: block;
     object-fit: cover;
     user-select: none;
@@ -428,19 +403,29 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 10.5%;
-    height: 18cqw;
+
+    /*
+       מעלה את כל הקשת כך שהמספר הפעיל
+       יושב מעט על החלק התחתון של הכרטיס.
+    */
+    bottom: 17.2%;
+
+    height: 24cqw;
+
     z-index: 100;
+
     pointer-events: none;
 }
 
 .computer-indicator {
     position: absolute;
+
     left: calc(50% + var(--indicator-x));
+
     bottom: 0;
 
-    width: 13cqw;
-    height: 13cqw;
+    width: 11.5cqw;
+    height: 11.5cqw;
 
     display: flex;
     align-items: center;
@@ -452,7 +437,9 @@
     color: white;
 
     font-family: "PloniB";
-    font-size: 6.5cqw;
+
+    font-size: 6.2cqw;
+
     line-height: 1;
 
     opacity: var(--indicator-opacity);
@@ -491,7 +478,7 @@
     position: absolute;
 
     left: 50%;
-    bottom: 3%;
+    bottom: 6%;
 
     transform: translateX(-50%);
 

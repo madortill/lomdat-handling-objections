@@ -46,8 +46,23 @@
        ביחס לרוחב ה-stage.
     */
     container-type: inline-size;
+    z-index: 2;
 }
 
+.projector-stage.is-exiting {
+    pointer-events: none;
+    animation: projectorPageExitUp 0.56s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes projectorPageExitUp {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-102%);
+    }
+}
 
 /* ============================================================
    BACKGROUND

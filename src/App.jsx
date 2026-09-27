@@ -6,7 +6,8 @@ import LearningPage from "./pages/LearningPage/LearningPage";
 import ProjectorPage from "./pages/ProjectorPage/ProjectorPage";
 import FloorPage from "./pages/FloorPage/FloorPage";
 import ComputerPage from "./pages/ComputerPage/ComputerPage";
-// import EndPage from "./pages/EndPage/EndPage";
+import ChairPage from "./pages/ChairPage/ChairPage";
+import EndPage from "./pages/EndPage/EndPage";
 
 import "./css/App.css";
 
@@ -44,10 +45,9 @@ function App() {
 
         <Route path="/learning/computer" element={<ComputerPage />} />
 
-        {/* <Route
-          path="/end"
-          element={<EndPage />}
-        /> */}
+        <Route path="/learning/chair" element={<ChairPage />} />
+
+        <Route path="/end" element={<EndPage />} />
       </Routes>
     </div>
   );

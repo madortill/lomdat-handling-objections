@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./ProjectorPage.css";
+import PageTransitionOverlay from "../../components/PageTransitionOverlay/PageTransitionOverlay";
 
 /* ============================================================
    Background
@@ -50,6 +51,7 @@ import {
 } from "../../utils/learningProgress";
 
 const LAST_SLIDE_INDEX = 3;
+const EXIT_DURATION = 620;
 
 /* ============================================================
    Projector Page
@@ -57,6 +59,9 @@ const LAST_SLIDE_INDEX = 3;
 
 function ProjectorPage() {
   const navigate = useNavigate();
+
+  const exitTimeoutRef = useRef(null);
+  const [isExiting, setIsExiting] = useState(false);
 
   /* ============================================================
      Initial progress
@@ -100,6 +105,14 @@ function ProjectorPage() {
       });
     }
   }, [character, navigate]);
+
+  useEffect(() => {
+    return () => {
+      if (exitTimeoutRef.current) {
+        clearTimeout(exitTimeoutRef.current);
+      }
+    };
+  }, []);
 
   /* ============================================================
      Character assets
@@ -148,35 +161,30 @@ function ProjectorPage() {
   ============================================================ */
 
   const handleNext = () => {
-    /*
-      שקופיות 1-3:
-      פשוט ממשיכים קדימה.
-    */
-
-    if (currentSlide < LAST_SLIDE_INDEX) {
-      goToSlide(currentSlide + 1);
-
+    if (isExiting) {
       return;
     }
 
-    /*
-      שקופית 4:
-      אי אפשר לסיים לפני
-      שפתחו לפחות פעם אחת
-      את ה-popup.
-    */
+    if (currentSlide < LAST_SLIDE_INDEX) {
+      goToSlide(currentSlide + 1);
+      return;
+    }
 
     if (!hasOpenedPopup) {
       return;
     }
 
-    /*
-      מסיימים את נושא המקרן.
-    */
-
     completeTopic("projector");
+    setIsExiting(true);
 
-    navigate("/learning");
+    exitTimeoutRef.current = setTimeout(() => {
+      navigate("/learning", {
+        state: {
+          transition: "glow-wash",
+          completedTopic: "projector",
+        },
+      });
+    }, EXIT_DURATION);
   };
 
   /* ============================================================
@@ -217,12 +225,13 @@ function ProjectorPage() {
 
   return (
     <main className="projector-page" dir="rtl">
-      {/* ======================================================
-          STAGE
-          479 × 852
-      ====================================================== */}
+      {isExiting && <PageTransitionOverlay mode="cover" />}
 
-      <div className="projector-stage">
+      <div
+        className={["projector-stage", isExiting ? "topic-stage-exit" : ""]
+          .filter(Boolean)
+          .join(" ")}
+      >
         {/* ====================================================
             Background
         ==================================================== */}

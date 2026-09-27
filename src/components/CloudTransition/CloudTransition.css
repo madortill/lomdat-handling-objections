@@ -1,0 +1,225 @@
+.cloud-transition {
+    position: absolute;
+    inset: 0;
+    z-index: 999;
+    overflow: hidden;
+    pointer-events: auto;
+    isolation: isolate;
+}
+
+.cloud-transition::before {
+    content: "";
+    position: absolute;
+    inset: -5%;
+    z-index: 0;
+    background: rgba(221, 244, 255, 0.96);
+    backdrop-filter: blur(0.45rem);
+    -webkit-backdrop-filter: blur(0.45rem);
+}
+
+.cloud-transition__cloud {
+    position: absolute;
+    z-index: 2;
+    width: 58%;
+    height: 14%;
+    border-radius: 999px;
+    background: rgba(249, 253, 255, 0.98);
+    box-shadow:
+        0 0 2rem rgba(255, 255, 255, 0.95),
+        0 0.6rem 2rem rgba(121, 193, 226, 0.18);
+    filter: blur(0.08rem);
+}
+
+.cloud-transition__cloud::before,
+.cloud-transition__cloud::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.cloud-transition__cloud::before {
+    width: 44%;
+    aspect-ratio: 1;
+    left: 14%;
+    bottom: 24%;
+}
+
+.cloud-transition__cloud::after {
+    width: 34%;
+    aspect-ratio: 1;
+    right: 13%;
+    bottom: 18%;
+}
+
+.cloud-transition__cloud--1 {
+    left: -16%;
+    top: 7%;
+}
+
+.cloud-transition__cloud--2 {
+    right: -19%;
+    top: 23%;
+    width: 66%;
+}
+
+.cloud-transition__cloud--3 {
+    left: -20%;
+    top: 43%;
+    width: 70%;
+}
+
+.cloud-transition__cloud--4 {
+    right: -18%;
+    top: 61%;
+    width: 63%;
+}
+
+.cloud-transition__cloud--5 {
+    left: 10%;
+    bottom: -3%;
+    width: 82%;
+    height: 18%;
+}
+
+/* ============================================================
+   COVER
+   העננים נכנסים ומכסים את המסך
+============================================================ */
+
+.cloud-transition--cover {
+    animation: cloud-layer-cover 0.62s ease-in-out both;
+}
+
+.cloud-transition--cover .cloud-transition__cloud--1 {
+    animation: cloud-cover-left 0.62s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--cover .cloud-transition__cloud--2 {
+    animation: cloud-cover-right 0.62s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--cover .cloud-transition__cloud--3 {
+    animation: cloud-cover-left 0.62s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--cover .cloud-transition__cloud--4 {
+    animation: cloud-cover-right 0.62s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--cover .cloud-transition__cloud--5 {
+    animation: cloud-cover-bottom 0.62s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes cloud-layer-cover {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes cloud-cover-left {
+    from {
+        transform: translateX(-115%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes cloud-cover-right {
+    from {
+        transform: translateX(115%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes cloud-cover-bottom {
+    from {
+        transform: translateY(120%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   REVEAL
+   אותם עננים נפתחים ומגלים את LearningPage
+============================================================ */
+
+.cloud-transition--reveal {
+    animation: cloud-layer-reveal 0.75s ease-in-out both;
+}
+
+.cloud-transition--reveal .cloud-transition__cloud--1 {
+    animation: cloud-reveal-left 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--reveal .cloud-transition__cloud--2 {
+    animation: cloud-reveal-right 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--reveal .cloud-transition__cloud--3 {
+    animation: cloud-reveal-left 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--reveal .cloud-transition__cloud--4 {
+    animation: cloud-reveal-right 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.cloud-transition--reveal .cloud-transition__cloud--5 {
+    animation: cloud-reveal-bottom 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes cloud-layer-reveal {
+    0% {
+        opacity: 1;
+    }
+
+    55% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes cloud-reveal-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-125%);
+    }
+}
+
+@keyframes cloud-reveal-right {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(125%);
+    }
+}
+
+@keyframes cloud-reveal-bottom {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(125%);
+    }
+}

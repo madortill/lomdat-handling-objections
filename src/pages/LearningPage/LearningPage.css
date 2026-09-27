@@ -187,14 +187,14 @@
 }
 
 @keyframes learningBluePulse {
+
     0%,
     100% {
         filter:
             /* brightness(1.03)
             saturate(1.05) */
             /* drop-shadow(0 0 0.08rem rgba(225, 249, 255, 0.95)) */
-            drop-shadow(0 0 0.22rem rgba(75, 205, 255, 0.72))
-            drop-shadow(0 0 0.5rem rgba(0, 143, 220, 0.45));
+            drop-shadow(0 0 0.22rem rgba(75, 205, 255, 0.72)) drop-shadow(0 0 0.5rem rgba(0, 143, 220, 0.45));
     }
 
     50% {
@@ -203,8 +203,7 @@
             saturate(1.2) */
             /* drop-shadow(0 0 0.12rem rgba(240, 253, 255, 1)) */
             /* drop-shadow(0 0 0.4rem rgba(69, 211, 255, 1)) */
-            drop-shadow(0 0 0.8rem rgba(0, 138, 235, 0.95))
-            drop-shadow(0 0 1.25rem rgba(0, 82, 190, 0.72));
+            drop-shadow(0 0 0.8rem rgba(0, 138, 235, 0.95)) drop-shadow(0 0 1.25rem rgba(0, 82, 190, 0.72));
     }
 }
 
@@ -664,5 +663,129 @@
 
         transform:
             translateY(0);
+    }
+}
+
+.learning-object.is-current.is-return-next {
+    animation: learningReturnNextPulse .9s ease-out both;
+}
+
+.learning-completion-check.is-return-completed {
+    animation: learningReturnCompletedPop .75s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+@keyframes learningReturnNextPulse {
+    0% {
+        filter:
+            drop-shadow(0 0 .15rem rgba(255, 255, 255, .9)) drop-shadow(0 0 .35rem rgba(75, 205, 255, .6));
+    }
+
+    45% {
+        filter:
+            drop-shadow(0 0 .3rem rgba(255, 255, 255, 1)) drop-shadow(0 0 1rem rgba(0, 168, 245, 1)) drop-shadow(0 0 1.7rem rgba(0, 96, 210, .85));
+    }
+
+    100% {
+        filter:
+            drop-shadow(0 0 .22rem rgba(75, 205, 255, .72)) drop-shadow(0 0 .5rem rgba(0, 143, 220, .45));
+    }
+}
+
+@keyframes learningReturnCompletedPop {
+    0% {
+        opacity: 0;
+        transform: scale(.25);
+    }
+
+    55% {
+        opacity: 1;
+        transform: scale(1.35);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.learning-course-finish-button {
+    position: absolute;
+    left: 50%;
+    bottom: 9.5cqw;
+    z-index: 50;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2cqw;
+    min-width: 40cqw;
+    padding: 1.8cqw 5cqw;
+    border: none;
+    border-radius: 4cqw;
+    background: #1B81D7;
+    color: white;
+    font-family: "Matty";
+    font-weight: 600;
+    font-size: 4.8cqw;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow:
+        0 0.6cqw 1.7cqw rgba(0, 0, 0, 0.16),
+        0 0 1.5cqw rgba(8, 121, 184, 0.28);
+    animation:
+        learningFinishButtonIn .5s cubic-bezier(.34, 1.56, .64, 1) both,
+        learningFinishButtonPulse 1.8s ease-in-out .6s infinite;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.learning-course-finish-arrow {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 5cqw;
+    line-height: 1;
+    animation: learningFinishArrow 1s ease-in-out infinite;
+}
+
+.learning-course-finish-button:active {
+    transform: translateX(-50%) scale(.95);
+}
+
+@keyframes learningFinishButtonIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(3cqw) scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes learningFinishButtonPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0.6cqw 1.7cqw rgba(0, 0, 0, 0.16),
+            0 0 1.2cqw rgba(8, 121, 184, 0.22);
+    }
+
+    50% {
+        box-shadow:
+            0 0.6cqw 1.7cqw rgba(0, 0, 0, 0.16),
+            0 0 2.6cqw rgba(31, 189, 242, 0.65);
+    }
+}
+
+@keyframes learningFinishArrow {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-1cqw);
     }
 }

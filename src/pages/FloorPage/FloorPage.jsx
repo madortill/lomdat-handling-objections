@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FloorPage.css";
+import PageTransitionOverlay from "../../components/PageTransitionOverlay/PageTransitionOverlay";
 
 import floorBackground from "../../assets/floor-classroom-background.svg";
 
@@ -61,10 +62,12 @@ const FLOOR_SLIDES = [
 
 const LAST_SLIDE_INDEX = FLOOR_SLIDES.length - 1;
 const ANIMATION_DURATION = 380;
+const EXIT_DURATION = 620;
 
 function FloorPage() {
   const navigate = useNavigate();
   const pointerStartX = useRef(null);
+  const exitTimeoutRef = useRef(null);
 
   const [initialLearningProgress] = useState(() => getLearningProgress());
 
@@ -112,6 +115,8 @@ function FloorPage() {
   */
   const [transitionData, setTransitionData] = useState(null);
 
+  const [isExiting, setIsExiting] = useState(false);
+
   const isAnimating = transitionData !== null;
 
   useEffect(() => {
@@ -150,6 +155,14 @@ function FloorPage() {
     };
   }, [transitionData]);
 
+  useEffect(() => {
+    return () => {
+      if (exitTimeoutRef.current) {
+        clearTimeout(exitTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const floorCharacter =
     character === "boy" ? boyFloorCharacter : girlFloorCharacter;
 
@@ -158,7 +171,8 @@ function FloorPage() {
       slideIndex < 0 ||
       slideIndex > LAST_SLIDE_INDEX ||
       slideIndex === currentSlide ||
-      isAnimating
+      isAnimating ||
+      isExiting
     ) {
       return;
     }
@@ -214,7 +228,7 @@ function FloorPage() {
   };
 
   const handlePointerDown = (event) => {
-    if (isAnimating) {
+    if (isAnimating || isExiting) {
       return;
     }
 
@@ -230,14 +244,14 @@ function FloorPage() {
       pointerStartX.current = null;
       return;
     }
-  
+
     const distance = event.clientX - pointerStartX.current;
     pointerStartX.current = null;
-  
+
     if (Math.abs(distance) < 35) {
       return;
     }
-  
+
     /*
       Swipe ימינה
       → האנימציה זזה ימינה
@@ -246,7 +260,7 @@ function FloorPage() {
       handleCarouselNext();
       return;
     }
-  
+
     /*
       Swipe שמאלה
       → האנימציה זזה שמאלה
@@ -262,12 +276,21 @@ function FloorPage() {
     floorAlreadyCompleted || visitedSlides.length === FLOOR_SLIDES.length;
 
   const handleCompleteFloor = () => {
-    if (!allSlidesVisited) {
+    if (!allSlidesVisited || isExiting) {
       return;
     }
 
     completeTopic("floor");
-    navigate("/learning");
+    setIsExiting(true);
+
+    exitTimeoutRef.current = setTimeout(() => {
+      navigate("/learning", {
+        state: {
+          transition: "glow-wash",
+          completedTopic: "floor",
+        },
+      });
+    }, EXIT_DURATION);
   };
 
   const handleBackToLearning = () => {
@@ -314,7 +337,7 @@ function FloorPage() {
               <br />
               לחצו על החיצים
               <br />
-              כדי ללמוד 
+              כדי ללמוד
             </div>
 
             <img
@@ -370,7 +393,13 @@ function FloorPage() {
 
   return (
     <main className="floor-page" dir="rtl">
-      <div className="floor-stage">
+      {isExiting && <PageTransitionOverlay mode="cover" />}
+
+      <div
+        className={["floor-stage", isExiting ? "topic-stage-exit" : ""]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <img
           src={floorBackground}
           alt=""

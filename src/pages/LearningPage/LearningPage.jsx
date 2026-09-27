@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./LearningPage.css";
+import PageTransitionOverlay from "../../components/PageTransitionOverlay/PageTransitionOverlay";
 
 /* ============================================================
      Classroom assets
@@ -104,9 +105,9 @@ const CLASSROOM_ELEMENTS = [
 
     hitbox: {
       left: "0%",
-      top: "49%",
-      width: "31%",
-      height: "38%",
+      top: "47%",
+      width: "16%",
+      height: "42%",
     },
   },
 
@@ -120,9 +121,9 @@ const CLASSROOM_ELEMENTS = [
     route: "/learning/chair",
 
     hitbox: {
-      left: "76%",
-      top: "60%",
-      width: "24%",
+      left: "68%",
+      top: "56%",
+      width: "32%",
       height: "27%",
     },
   },
@@ -130,6 +131,17 @@ const CLASSROOM_ELEMENTS = [
 
 function LearningPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [showTransitionReveal, setShowTransitionReveal] = useState(
+    () => location.state?.transition === "glow-wash"
+  );
+
+  const [completedTopic] = useState(
+    () => location.state?.completedTopic ?? null
+  );
+
+  const [showReturnCue, setShowReturnCue] = useState(false);
 
   /* ============================================================
        Progress
@@ -149,6 +161,32 @@ function LearningPage() {
     }
   }, [progress.character, navigate]);
 
+  useEffect(() => {
+    if (location.state?.transition !== "glow-wash") {
+      return;
+    }
+
+    navigate(location.pathname, {
+      replace: true,
+      state: null,
+    });
+  }, [location.pathname, location.state, navigate]);
+
+  useEffect(() => {
+    if (!showReturnCue) return;
+
+    const timeoutId = setTimeout(() => {
+      setShowReturnCue(false);
+    }, 900);
+
+    return () => clearTimeout(timeoutId);
+  }, [showReturnCue]);
+
+  const handleTransitionRevealDone = () => {
+    setShowTransitionReveal(false);
+    setShowReturnCue(true);
+  };
+
   /* ============================================================
        Current topic
     ============================================================ */
@@ -156,6 +194,10 @@ function LearningPage() {
   const currentTopicId = useMemo(() => {
     return getCurrentTopicId(progress);
   }, [progress]);
+
+  const allTopicsCompleted = CLASSROOM_ELEMENTS.every((element) =>
+    progress.completedTopics.includes(element.id)
+  );
 
   /* ============================================================
        Character
@@ -297,12 +339,10 @@ function LearningPage() {
                     draggable="false"
                     className={[
                       "learning-object",
-
                       `learning-object--${element.id}`,
-
                       shouldPulse ? "is-current" : "",
-
                       isCompleted ? "is-completed" : "",
+                      showReturnCue && isCurrent ? "is-return-next" : "",
                     ]
                       .filter(Boolean)
                       .join(" ")}
@@ -364,7 +404,14 @@ function LearningPage() {
 
                 {isCompleted && progress.introSeen && (
                   <span
-                    className="learning-completion-check"
+                    className={[
+                      "learning-completion-check",
+                      showReturnCue && element.id === completedTopic
+                        ? "is-return-completed"
+                        : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
                     aria-hidden="true"
                   >
                     ✓
@@ -438,6 +485,25 @@ function LearningPage() {
             </div>
           )}
         </div>
+        {progress.introSeen && allTopicsCompleted && (
+          <button
+            type="button"
+            className="learning-course-finish-button"
+            onClick={() => navigate("/end")}
+          >
+            לסיום הלומדה
+            <span className="learning-course-finish-arrow" aria-hidden="true">
+              ←
+            </span>
+          </button>
+        )}
+
+        {showTransitionReveal && (
+          <PageTransitionOverlay
+            mode="reveal"
+            onDone={handleTransitionRevealDone}
+          />
+        )}
       </div>
     </main>
   );

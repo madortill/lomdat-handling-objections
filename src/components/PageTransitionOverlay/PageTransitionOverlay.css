@@ -1,0 +1,151 @@
+.page-transition-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 999;
+    overflow: hidden;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, .96) 0%, rgba(218, 245, 255, .96) 36%, rgba(143, 220, 248, .98) 70%, rgba(74, 183, 230, 1) 100%);
+}
+
+.page-transition-overlay::before {
+    content: "";
+    position: absolute;
+    width: 115%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .45);
+    filter: blur(3rem);
+}
+
+.page-transition-overlay__message {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.page-transition-overlay__check {
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #55B95E;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow:
+        0 0 .8rem rgba(255, 255, 255, .9),
+        0 0 1.8rem rgba(85, 185, 94, .6);
+}
+
+.page-transition-overlay__title {
+    margin-top: 1rem;
+    font-family: "PloniB";
+    font-size: 1.7rem;
+    color: #075E9C;
+}
+
+.page-transition-overlay__subtitle {
+    margin-top: .2rem;
+    font-family: "Ploni";
+    font-size: 1.15rem;
+    color: #28769d;
+}
+
+.page-transition-overlay--cover {
+    animation: pageTransitionCover .62s cubic-bezier(.4, 0, .2, 1) both;
+}
+
+.page-transition-overlay--cover .page-transition-overlay__message {
+    animation: pageTransitionMessageIn .48s cubic-bezier(.34, 1.56, .64, 1) .08s both;
+}
+
+.page-transition-overlay--reveal {
+    animation: pageTransitionReveal .5s ease-out both;
+}
+
+.page-transition-overlay--reveal .page-transition-overlay__message {
+    animation: pageTransitionMessageOut .36s ease both;
+}
+
+.topic-stage-exit {
+    pointer-events: none;
+    transform-origin: center;
+    animation: topicStageExit .62s cubic-bezier(.4, 0, .2, 1) forwards;
+}
+
+@keyframes topicStageExit {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    100% {
+        transform: scale(.975);
+        opacity: .18;
+        filter: blur(.08rem);
+    }
+}
+
+@keyframes pageTransitionCover {
+    0% {
+        opacity: 0;
+    }
+
+    35% {
+        opacity: .35;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pageTransitionReveal {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pageTransitionMessageIn {
+    0% {
+        opacity: 0;
+        transform: translateY(.8rem) scale(.82);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pageTransitionMessageOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(.94);
+    }
+}

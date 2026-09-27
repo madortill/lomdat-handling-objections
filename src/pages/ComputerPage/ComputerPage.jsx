@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ComputerPage.css";
+import PageTransitionOverlay from "../../components/PageTransitionOverlay/PageTransitionOverlay";
 
 import computerBackground from "../../assets/computer-classroom-background.svg";
-import learningBackground from "../../assets/classroom-background.svg";
+// import learningBackground from "../../assets/classroom-background.svg";
 
 import girlLook from "../../assets/girl-computer-response-look.svg";
 import boyLook from "../../assets/boy-computer-response-look.svg";
@@ -48,7 +49,7 @@ const COMPUTER_CARDS = [
   {
     id: "look",
     title: "מבט",
-    accent: "#1598C7",
+    accent: "#8FD2E8",
     glow: "rgba(21, 152, 199, 0.75)",
     text: "מבט רציני וממוקד לעיני החניך. המבט משמש כאזהרה שקטה ולא שופטת, מעלה את המודעות של החניך לכך שהמדריך רואה אותו, ושהדבר מפריע לו.",
     girlImage: girlLook,
@@ -57,7 +58,7 @@ const COMPUTER_CARDS = [
   {
     id: "proximity",
     title: "קרבה פיזית",
-    accent: "#17B5DF",
+    accent: "#28BFF0",
     glow: "rgba(23, 181, 223, 0.75)",
     text: "קרבה ותנועה של המדריך שוברת מעין מחיצות ומאפשרת מיקוד מחדש.",
     girlImage: girlProximity,
@@ -66,16 +67,16 @@ const COMPUTER_CARDS = [
   {
     id: "silence",
     title: "שתיקה",
-    accent: "#4595D0",
+    accent: "#3C86C5",
     glow: "rgba(69, 149, 208, 0.75)",
-    text: "שתיקה יוצאת אפקט רצני. כאשר מעביר השיעור משתתק נוצרת התחושה שמשהו מתרחש שלא כשורה.",
+    text: "שתיקה יוצרת אפקט רציני. כאשר מעביר השיעור משתתק נוצרת התחושה שמשהו מתרחש שלא כשורה.",
     girlImage: girlSilence,
     boyImage: boySilence,
   },
   {
     id: "reflection",
     title: "שיקוף מילולי",
-    accent: "#74BFF2",
+    accent: "#83C6FF",
     glow: "rgba(116, 191, 242, 0.8)",
     text: "תיאור ההתנהגות האובייקטיבי של החניך: “אתה מדבר”, יעיל יותר מאשר ציווי: “די לדבר”, כיוון שביטוי זה אינו שופט אלא יוצר מודעות.",
     girlImage: girlReflection,
@@ -84,7 +85,7 @@ const COMPUTER_CARDS = [
   {
     id: "distractions",
     title: "סילוק גורמים מסיחים",
-    accent: "#1CA7C8",
+    accent: "#1BA0BE",
     glow: "rgba(28, 167, 200, 0.75)",
     text: "לבקש להכניס את הגורם המסיח את תשומת ליבם של החניכים, למשל: החפץ בו החניך מתעסק, מכשיר שמסיח את תשומת הלב או העברת החניך למקום אחר.",
     girlImage: girlDistractions,
@@ -93,7 +94,7 @@ const COMPUTER_CARDS = [
   {
     id: "humor",
     title: "הומור",
-    accent: "#38ACCE",
+    accent: "#70C4D7",
     glow: "rgba(56, 172, 206, 0.75)",
     text: "הומור יוצר אווירה לימודית, נעימה ומשוחררת ומאפשר גם לנו להתמודד עם מצבים מביכים או מורכבים.",
     girlImage: girlHumor,
@@ -102,7 +103,7 @@ const COMPUTER_CARDS = [
   {
     id: "contract",
     title: "הגדרת חוזה התנהגותי",
-    accent: "#008EFF",
+    accent: "#008CFF",
     glow: "rgba(0, 142, 255, 0.85)",
     text: "לעיתים דפוס מסוים משתרש בכיתה כקבוצה והערות נקודתיות מאבדות מכוחן. במקרה זה נעצור את מהלך השיעור ונבהיר את כללי ההתנהגות המקובלים בכיתה, שאולי נשכחו או לא היו ברורים מלכתחילה.",
     girlImage: girlContract,
@@ -111,7 +112,7 @@ const COMPUTER_CARDS = [
   {
     id: "positive",
     title: "“חיוב”",
-    accent: "#438CC5",
+    accent: "#4D85B3",
     glow: "rgba(67, 140, 197, 0.8)",
     text: "כאשר אנו מתייחסים אל התנגדות, חומר או מרכיב בשיעור באופן ידידותי, ענייני וחיובי אנו הופכים את התגובה השלילית לחיובית.",
     girlImage: girlPositive,
@@ -120,7 +121,7 @@ const COMPUTER_CARDS = [
   {
     id: "remove-soldier",
     title: "סילוק חייל",
-    accent: "#0875B8",
+    accent: "#075597",
     glow: "rgba(8, 117, 184, 0.85)",
     text: "אנו הולכים לפי הכלל: “100% חומר ל-100% חניכים. אם הסילוק פוגע בחייל זהו דבר בעייתי. לכן יש להשתמש בתגובה זו במקרים חריגים.",
     girlImage: girlRemoveSoldier,
@@ -130,8 +131,8 @@ const COMPUTER_CARDS = [
 
 const LAST_CARD_INDEX = COMPUTER_CARDS.length - 1;
 const CARD_WIDTH_RATIO = 312 / 479;
-const CARD_GAP_RATIO = 20 / 479;
-const EXIT_DURATION = 560;
+const CARD_GAP_RATIO = 12 / 479;
+const EXIT_DURATION = 620;
 
 function ComputerPage() {
   const navigate = useNavigate();
@@ -414,15 +415,18 @@ function ComputerPage() {
   const canFinish = allCardsVisited;
 
   const handleFinish = () => {
-    if (!canFinish || isExiting) {
-      return;
-    }
+    if (!canFinish || isExiting) return;
 
     completeTopic("computer");
     setIsExiting(true);
 
     exitTimeoutRef.current = setTimeout(() => {
-      navigate("/learning");
+      navigate("/learning", {
+        state: {
+          transition: "glow-wash",
+          completedTopic: "computer",
+        },
+      });
     }, EXIT_DURATION);
   };
 
@@ -432,15 +436,11 @@ function ComputerPage() {
 
   return (
     <main className="computer-page" dir="rtl">
-      <div className="computer-return-underlay" aria-hidden="true">
-        <div className="computer-return-stage">
-          <img src={learningBackground} alt="" draggable="false" />
-        </div>
-      </div>
+      {isExiting && <PageTransitionOverlay mode="cover" />}
 
       <div
         ref={stageRef}
-        className={["computer-stage", isExiting ? "is-exiting" : ""]
+        className={["computer-stage", isExiting ? "topic-stage-exit" : ""]
           .filter(Boolean)
           .join(" ")}
       >
@@ -565,29 +565,39 @@ function ComputerPage() {
             <div className="computer-indicators" aria-hidden="true">
               {COMPUTER_CARDS.map((card, index) => {
                 const relativePosition = liveCardPosition - index;
-
                 const distance = Math.abs(relativePosition);
 
-                const scale = Math.max(0.38, 1 - distance * 0.32);
+                /*
+      הכרטיס הפעיל מקבל עיגול גדול מאוד.
+      העיגולים לידו קטנים משמעותית,
+      והרחוקים נשארים בגודל קטן וקבוע.
+    */
+                const scale = Math.max(0.62, 1.68 - distance * 0.72);
 
-                const verticalOffset = Math.min(distance, 3) * 6.5;
+                /*
+      יוצרים קשת:
+      ככל שהעיגול רחוק יותר מהמרכז
+      הוא יורד יותר למטה.
+    */
+                const verticalOffset = Math.min(distance, 2.7) * 9.2;
 
-                const opacity = Math.max(0.6, 1 - distance * 0.12);
+                const opacity = Math.max(0.72, 1 - distance * 0.1);
 
-                const glowSize = Math.max(0.5, 2.4 - distance * 0.7);
+                const glowSize = Math.max(0.45, 2.7 - distance * 0.72);
 
                 return (
                   <div
                     key={card.id}
                     className="computer-indicator"
                     style={{
-                      "--indicator-x": `${relativePosition * 20}cqw`,
+                      "--indicator-x": `${relativePosition * 26.5}cqw`,
                       "--indicator-y": `${verticalOffset}cqw`,
                       "--indicator-scale": scale,
                       "--indicator-opacity": opacity,
                       "--indicator-color": card.accent,
                       "--indicator-glow": card.glow,
                       "--indicator-glow-size": `${glowSize}cqw`,
+                      zIndex: 100 - Math.round(distance * 10),
                     }}
                   >
                     {index + 1}
