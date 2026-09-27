@@ -507,6 +507,7 @@ function ComputerPage() {
             </button>
 
             <h1 className="computer-cards-heading">9 התגובות האפשריות</h1>
+            <h1 className="computer-cards-text">- החליקו על המסך כדי ללמוד -</h1>
 
             <div
               className={[

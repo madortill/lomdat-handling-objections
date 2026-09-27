@@ -60,12 +60,18 @@
     display: block;
     width: 8cqw;
     height: auto;
+
+    filter:
+        drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.95));
 }
 
 .chair-bahad2-logo {
     display: block;
     width: 14cqw;
     height: auto;
+
+    filter:
+        drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.95));
 }
 
 .chair-back-button {
@@ -95,17 +101,24 @@
     width: 12cqw;
     height: auto;
     pointer-events: none;
+
+    filter:
+        drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.95));
 }
 
 .chair-heading {
     position: absolute;
     top: 22.5%;
     left: 50%;
-    width: 68%;
+    width: 55%;
     transform: translateX(-50%);
     z-index: 10;
     text-align: center;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .chair-heading-pretitle {
@@ -126,8 +139,9 @@
 .chair-heading-note {
     margin: 1.8cqw 0 0;
     font-family: "Ploni";
-    font-size: 3.4cqw;
+    font-size: 3.05cqw;
     line-height: 1.2;
+    width: 85%;
 }
 
 .chair-card-viewport {
@@ -159,7 +173,7 @@
     align-items: center;
     padding: 7.5cqw 8cqw 6.5cqw;
     border-radius: 8cqw;
-    background: rgba(235, 239, 248, 0.95);
+    background: rgba(235, 239, 248, 0.90);
     box-shadow:
         0 1.6cqw 4.5cqw rgba(0, 0, 0, 0.16),
         inset 0 0 0 0.3cqw rgba(255, 255, 255, 0.65);

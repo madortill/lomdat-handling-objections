@@ -360,7 +360,7 @@ function ChairPage() {
 
           <h1 className="chair-heading-title">העקרונות המנחים:</h1>
 
-          <p className="chair-heading-note">- לחצו על החיצים כדי ללמוד -</p>
+          <p className="chair-heading-note">- החליקו על המסך או לחצו על החיצים כדי ללמוד -</p>
         </div>
 
         <div

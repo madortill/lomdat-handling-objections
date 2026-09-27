@@ -295,6 +295,61 @@
     pointer-events: none;
 }
 
+.computer-cards-text {
+    position: absolute;
+    top: 25cqw;
+    left: 50%;
+
+    width: 72%;
+    margin: 0;
+
+    transform: translateX(-50%);
+
+    font-family: "Ploni";
+    font-size: 3.5cqw;
+    line-height: 1.1;
+
+    text-align: center;
+    /* color: rgb(75, 75, 75); */
+    color: #186f85;
+
+    z-index: 90;
+
+    isolation: isolate;
+
+    text-shadow:
+        0 0 1cqw rgba(255, 255, 255, 0.7),
+        0 0 0.3cqw #186f85ea;
+}
+
+.computer-cards-text::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 100%;
+    height: 180%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(ellipse at center,
+            rgba(255, 255, 255, 0.72) 0%,
+            rgba(255, 255, 255, 0.48) 34%,
+            rgba(0, 139, 207, 0.22) 55%,
+            rgba(0, 139, 207, 0) 75%);
+
+    filter: blur(2cqw);
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
 /* ============================================================
    CARD DRAG VIEWPORT
 ============================================================ */
