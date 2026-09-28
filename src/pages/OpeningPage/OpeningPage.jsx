@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { startOrResumeLearning } from "../../utils/learningProgress.js";
 import "./OpeningPage.css";
+import About from "../../components/About/About";
 
 import bahad from "../../assets/bahad.png";
 import bahad2 from "../../assets/bahad2.svg";
@@ -17,7 +18,9 @@ function OpeningPage() {
 
   return (
     <div className="opening-page">
-      <div className="opening-black-cover"></div>
+
+      <About />
+
       <img src={bahad} alt="bahad logo" className="bahad-logo" />
       <img src={bahad2} alt="bahad2 logo" className="bahad2-logo" />
       <img src={til} alt="til logo" className="til-logo" />
@@ -77,10 +80,8 @@ function OpeningPage() {
               type="button"
               className="continue-button"
               onClick={() => {
-                startOrResumeLearning(
-                  selectedImage
-                );
-              
+                startOrResumeLearning(selectedImage);
+
                 navigate("/learning");
               }}
             >

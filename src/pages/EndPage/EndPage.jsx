@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLearningProgress } from "../../utils/learningProgress.js";
 import "./EndPage.css";
+import About from "../../components/About/About";
 
 import background from "../../assets/background-opening.svg";
 import bahad from "../../assets/bahad.png";
@@ -56,6 +57,8 @@ function EndPage() {
           className="end-background"
           draggable="false"
         />
+
+        <About />
 
         <div className="end-confetti" aria-hidden="true">
           {Array.from({ length: CONFETTI_COUNT }, (_, index) => {
