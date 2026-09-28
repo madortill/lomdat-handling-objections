@@ -70,9 +70,11 @@ function About() {
 
         <h3 className="about-title">מומחי תוכן:</h3>
 
-        <p className="about-name">סמ״ר שם שם</p>
+        <p className="about-name">סמ״ר רותם מלכה</p>
 
-        <p className="about-name">רב״ט שם שם</p>
+        <p className="about-name">סמל יהלי היינה</p>
+
+        <p className="about-name">רב״ט טליה גיאר</p>
 
         <h3 className="about-title">רמ״ד טי״ל:</h3>
 

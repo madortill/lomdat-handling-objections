@@ -107,11 +107,13 @@
 /* כפתור החץ */
 
 .btn-opening-arrow {
-    width: 1.5rem;
+    width: 1.8rem;
     margin-top: 1rem;
     cursor: pointer;
+    border-radius: 50%;
 
     transition: transform 0.25s ease;
+   animation: startArrowBtnAnimation 1.25s ease-in-out infinite;
 }
 
 @media (hover: hover) {
@@ -124,6 +126,23 @@
     transform: scale(0.95);
 }
 
+@keyframes startArrowBtnAnimation {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 1cqw 1.9cqw rgba(8, 121, 184, 0.3),
+            0 0 0 rgba(31, 189, 242, 0);
+    }
+
+    50% {
+        transform: scale(1.06);
+        box-shadow:
+            0 1cqw 1.5cqw rgba(8, 121, 184, 0.3),
+            0 0 3cqw rgba(31, 189, 242, 0.75);
+    }
+}
 
 /* התוכן שנפתח */
 

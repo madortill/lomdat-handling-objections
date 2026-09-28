@@ -162,9 +162,9 @@
     transform-origin: top right;
 }
 
-.about-wrapper.open .about-lanyard {
+/* .about-wrapper.open .about-lanyard {
     animation: aboutLanyardIn 0.65s cubic-bezier(.34, 1.56, .64, 1) both;
-}
+} */
 
 /* =========================================
    MAIN TITLE
